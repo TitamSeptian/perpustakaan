@@ -89,26 +89,7 @@ include '../../koneksi.php';
           <label for="exampleInputPassword1">Jumlah Hari Pinjam</label>
           <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Jumlah Hari" name="form_jumlah_hari_pjn" value="<?php   echo $row_select['jumlah_hari_pjn'] ?>" required>
         </div>
-        
- <!--        <div class="row">
-          <div class="col">
-            <label for="exampleInputPassword1">Jumlah Hari Pinjam</label>
-            <input type="text" class="form-control" placeholder="Judul Buku" name="form_judul_buku_pjn" required>
-          </div>
-          <div class="col">
-            <label for="exampleInputPassword1">Jumlah Buku</label>
-            <input type="text" class="form-control" placeholder="Jumlah Buku" name="form_jumlah_buku_pjn" required>
-          </div>
-        </div> -->
         <br>
-        <!-- <div class="form-group">
-          <label for="exampleInputPassword1">Tanggal Pinjam</label>
-          <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Tanggal Pinjam">
-        </div> -->
-
-
-        
-
         <div class="" align="center">
           <input type="submit" name="form_edit" value="Perbaharui" class="btn btn-dark">
         <!-- <a href="kelola-peminjaman.php"><button type="button" class="btn btn-dark"><b>Ubah</b></button></a> -->
@@ -120,7 +101,6 @@ include '../../koneksi.php';
   </div>
 
 </body>
-<script type="text/javascript" src="resources/js/jquery-3.3.1.slim.min.js"></script>
 <script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script type="text/javascript">

@@ -1,49 +1,11 @@
-<?php 
-include "../../koneksi.php";
-
-  $action = isset($_POST["form_tambah"])?$_POST["form_tambah"]:"";
-  if ($action){
-    
-
-            $gambar_buku = $_FILES['form_gambar_buku']['name'];
-            $source = $_FILES['form_gambar_buku']['tmp_name'];
-            $folder = './../../resources/img/';
-            move_uploaded_file($source, $folder.$gambar_buku);
-      $sql  =
-            "INSERT INTO list_buku SET 
-            kode_buku =NULL, 
-            gambar_buku ='".$gambar_buku."',
-            judul_buku ='".$mysqli->real_escape_string($_POST['form_judul_buku'])."',
-            penerbit = '".$mysqli->real_escape_string($_POST['form_penerbit'])."',
-            tahun_terbit ='".$mysqli->real_escape_string($_POST['form_tahun_terbit'])."',
-            jumlah_halaman ='".$mysqli->real_escape_string($_POST['form_jumlah_Halaman'])."',
-            sinopsis ='".$mysqli->real_escape_string($_POST['form_sinopsis'])."',
-            penulis ='".$mysqli->real_escape_string($_POST['form_penulis'])."',
-            tanggal_entri_buku=NOW();";
-            if($mysqli->query($sql)){
-              echo "
-                <script>
-                  alert('Buku Berahsil Ditambahkan!');
-                  window.location='list-buku2.php';
-                </script>
-                ";
-            }else{
-              echo "
-                <script>
-                  alert('Buku gagal Ditambahkan!');
-                  window.location='list-buku2.php';
-                </script>
-              ";
-            }
-            }
- ?>
+<!DOCTYPE html>
 <html>
 <head>
   <title>e-Perpustakaan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../resources/css/tambah-buku.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous"> 
+  <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../resources/css/all.css"> 
 </head>
 <body style="background-color: #1e1e1e;">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -51,7 +13,7 @@ include "../../koneksi.php";
 </nav> 
   <div class="content" align="">
       <div class="login-box">
-        <form method="post" action="" enctype="multipart/form-data">
+        <form method="post" action="proses-tambah.php" enctype="multipart/form-data">
         <h3 class="txt" align="center"><b>Tambah Buku</b></h3>
         <div class="form-group">
            <div class="form-group">
@@ -113,6 +75,3 @@ include "../../koneksi.php";
 </script>
 </body>
 </html>
-<?php   
- $mysqli->close();
- ?>

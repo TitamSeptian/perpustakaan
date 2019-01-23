@@ -1,55 +1,4 @@
-<?php
- include "../../koneksi.php";
-  session_start();
- $jumlah_data_halaman = 5;
-$data_halaman= $mysqli->query("SELECT * FROM data_peminjaman");
-$jumlah_data =mysqli_num_rows($data_halaman);
-$jumlah_halaman = ceil($jumlah_data/$jumlah_data_halaman);
-$halaman_aktif = (isset($_GET["page"])) ? $_GET["page"] : 1;
-$awal_data = ($jumlah_data_halaman * $halaman_aktif) - $jumlah_data_halaman;
 
-// if (isset($_GET["halaman"])) {
-//   $halaman_aktif = $_GET["page"];
-// }else{
-//   $halaman_aktif = 1;
-// }
-
- 
- $data = "";
- $view = $mysqli->query("SELECT * FROM data_peminjaman ORDER BY id_pjn ASC LIMIT $awal_data,$jumlah_data_halaman ;");
- $num_result = $view->num_rows;
- if($num_result > 0){
- $no = 1;
- while($row = $view->fetch_assoc()){
- extract($row);
-
- $data.="
- <tr>
- <td>".$no."</td>
- <td>{$id_pjn}</td>
- <td>{$id_anggota_peminjaman}</td>
- <td>{$kode_buku_pjn}</td>
- <td>{$tanggal_entri_pjn}</td>
- <td>{$jumlah_hari_pjn}</td>
- <td>{$tgl_pengembalian}</td>
-<td>
-  <a href='ubah-data-peminjaman.php?id={$id_pjn}'>
-    <button type='button' class='btn btn-primary'><i class='fas fa-wrench'></i></button>
-  </a>
-
-  <a href='kelola-pengembalian.php?id={$id_pjn}&id_x={$id_anggota_peminjaman}&kodeBuku={$kode_buku_pjn}' onclick='return confirm(\" Apakah Anda Benar Buku Akan di Kembalikan ? \");'>
-    <button type='button' class='btn btn-danger'><i class='fas fa-check'></i></button>
-  </a>
-</td>
- 
- </tr>
- ";
- $no++;
- }
- }else{
- $data = "Daftar Kosong.";
- }
- ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,6 +17,7 @@ $awal_data = ($jumlah_data_halaman * $halaman_aktif) - $jumlah_data_halaman;
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 
 </head>
@@ -99,12 +49,6 @@ $awal_data = ($jumlah_data_halaman * $halaman_aktif) - $jumlah_data_halaman;
                 </li>
             </ul>
         </nav>
-
-        <!-- Page Content  -->
-        <!-- <button type="button" id="sidebarCollapse" class="btn btn-info">
-                        <i class="fas fa-align-left"></i>
-                        <span>Toggle Sidebar</span>
-                    </button> -->
         <div id="content">
           <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <button type="button" id="sidebarCollapse" class="btn btn-dark">
@@ -147,47 +91,21 @@ $awal_data = ($jumlah_data_halaman * $halaman_aktif) - $jumlah_data_halaman;
               <div class="container-fluid">
                  <form class="form-inline">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="button" id="btn_search">Search</button>
                   </form>
                   <br>
                   <a href="tambah-peminjaman.php"><i class="fas fa-plus"></i>Tambah</a>
                   <br>
-                <div class="table-responsive">
-                  <br>
-                <table class="table table-hover">
-                  <thead align="center">
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">ID Peminjam</th>
-                      <th scope="col">ID Anggota</th>
-                      <th scope="col">Kode Buku</th>
-                      <th scope="col">Tanggal Pinjam</th>
-                      <th scope="col">Hari Pinjam</th>
-                      <th scope="col">Tanggal Kembali</th>
-                      <th scope="col">Aksi</th>
-                    </tr>
-                  </thead>
-                  <tbody align="center">
-                    <?php   
-                      echo $data;
-                     ?>
-                  </tbody>
-                </table>
-              </div>
-               <?php  if($halaman_aktif>1): ?>
-                 <a href="?page=<?php echo $halaman_aktif - 1 ?>">&laquo;</a>
-                <?php   endif; ?>
-                 
-                
-                <?php   if($halaman_aktif<$jumlah_halaman): ?>
-                 <a href="?page=<?php echo $halaman_aktif + 1 ?>">&raquo;</a>
-                <?php   endif; ?>
+                <div class="table-responsive" id="data">
+                  <!-- table -->
+                </div> 
           </div>
         </div>
     </div>
 
-    <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  </body>
+    <!-- jQuery  -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <!-- Popper.JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <!-- Bootstrap JS -->
@@ -195,19 +113,7 @@ $awal_data = ($jumlah_data_halaman * $halaman_aktif) - $jumlah_data_halaman;
     <!-- jQuery Custom Scroller CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#sidebar").mCustomScrollbar({
-                theme: "minimal"
-            });
+    <script type="text/javascript" src="peminjaman.js"></script>
 
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar, #content').toggleClass('active');
-                $('.collapse.in').toggleClass('in');
-                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-            });
-        });
-    </script>
-</body>
 
 </html>

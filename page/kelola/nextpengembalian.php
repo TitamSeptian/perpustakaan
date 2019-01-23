@@ -17,6 +17,7 @@ include '../../koneksi.php';
                       $select_buku = $mysqli->query($sql_select_buku);
                       $row_select_buku=$select_buku->fetch_array();
  ?>
+ 
 <html>
 <head>
   <title>e-Perpustakaan</title>
@@ -43,7 +44,7 @@ include '../../koneksi.php';
         <div class="form-group">
           <small id="emailHelp" class="form-text text-muted">Tidak Perlu Diisi Jika Tidak Diperlukan!.</small>
           <label for="exampleInputPassword1">Jumlah Lebih Hari</label>
-          <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Lebih Hari" name="form_lebih_hari">
+          <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Lebih Hari" name="form_lebih_hari" autofocus autocomplete="off">
           <!-- <small id="emailHelp" class="form-text text-muted"><a href="nextpengembalian2.php">lihat denda</a></smal -->
         </div>
 

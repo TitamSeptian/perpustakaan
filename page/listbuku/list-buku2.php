@@ -1,44 +1,3 @@
-<?php
- include "../../koneksi.php";
-session_start();
- $data = "";
- $view = $mysqli->query("SELECT * FROM list_buku
- ORDER BY kode_buku DESC;");
- $num_result = $view->num_rows;
- if($num_result > 0){
- $no = 1;
- while($row = $view->fetch_assoc()){
- extract($row);
-
- $data.="
- <tr valign='center'>
- <td>".$no."</td>
- <td><img src='../../resources/img/$gambar_buku' width='120px' height='150px'></td>
- <td>{$kode_buku}</td>
- <td>{$judul_buku}</td>
- <td>{$penulis}</td>
- <td>{$penerbit}</td>
- <td>{$tahun_terbit}</td>
- <td>{$jumlah_halaman}</td>
- <td>{$sinopsis}</td>
-<td>
-  <a href='ubah-buku.php?kodeBuku={$kode_buku}'>
-    <button type='button' class='btn btn-primary'><i class='fas fa-wrench'></i></button>
-  </a>
-  
-  <a href='hapus-buku.php?kodeBuku={$kode_buku}?' onclick='return confirm(\" Buku Ini Akan Dihapus ? \");'>
-    <button type='button' class='btn btn-danger'><i class='fas fa-trash-alt'></i></button>
-  </a>
-</td>
- 
- </tr>
- ";
- $no++;
- }
- }else{
- $data = "<br><h3><b>Buku Kosong.</b></h3><br>";
- }
- ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,15 +8,13 @@ session_start();
     <title>e-Perpustakaan</title>
 
     <!-- Bootstrap CSS CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="../../resources/css/kelola-peminjaman.css">
     <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="../../resources/css/3.1.5/jquery.mCustomScrollbar.min.css">
 
-    <!-- Font Awesome JS -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    
 
 </head>
 
@@ -72,28 +29,22 @@ session_start();
 
             <ul class="list-unstyled components">
                 <li>
-                    <a href="../../Dashboard.php"><i class="fas fa-home" style="margin-right: 5px;"></i>Home</a>
+                    <a href="../../Dashboard.php"><i class="fas fa-home" id="space"></i>Home</a>
                 </li>
                 <li class="active">
-                    <a href="list-buku2.php"><i class="fas fa-book" style="margin-right: 5px;"></i>List Buku</a>
+                    <a href="list-buku2.php"><i class="fas fa-book"id="space" ></i>List Buku</a>
                 </li>
                 <li>
-                    <a href="../kelola/kelola-peminjaman.php"><i class="fas fa-wrench" style="margin-right: 5px;"></i>kelola</a>
+                    <a href="../kelola/kelola-peminjaman.php"><i class="fas fa-wrench" id="space"></i>kelola</a>
                 </li>
                 <li>
-                    <a href="../dataanggota/data-anggota.php"><i class="fas fa-address-book" style="margin-right: 5px;"></i>Data Anggota</a>
+                    <a href="../dataanggota/data-anggota.php"><i class="fas fa-address-book" id="space"></i>Data Anggota</a>
                 </li>
                 <li>
-                    <a href="../riwayat/riwayat.php"><i class="fas fa-sync-alt" style="margin-right: 5px;"></i>Riwayat</a>
+                    <a href="../riwayat/riwayat.php"><i class="fas fa-sync-alt" id="space"></i>Riwayat</a>
                 </li>
             </ul>
         </nav>
-
-        <!-- Page Content  -->
-        <!-- <button type="button" id="sidebarCollapse" class="btn btn-info">
-                        <i class="fas fa-align-left"></i>
-                        <span>Toggle Sidebar</span>
-                    </button> -->
         <div id="content">
           <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <button type="button" id="sidebarCollapse" class="btn btn-dark">
@@ -141,8 +92,8 @@ session_start();
                   <br>
                   <a href="tambah-buku.php"><i class="fas fa-plus"></i>Tambah</a>
                   <br>
-                <div class="table-responsive">
-    <table class="table">
+                <div class="table-responsive" id="data">
+    <!-- <table class="table">
   <thead class="thead-dark" align="center">
     <tr>
       <th scope="col">#</th>
@@ -158,39 +109,27 @@ session_start();
     </tr>
   </thead>
   <tbody align="center">
-    <?php   
-      echo $data;
-     ?>
-</table>
-</div>
+    
+</table> -->
+            </div>
                 </table>
               </div>
           </div>
         </div>
     </div>
-
+    <!-- Font Awesome JS -->
+    <script defer src="../../resources/js/solid.js"></script>
+    <script defer src="../../resources/js/fontawesome.js"></script>
     <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="../../resources/js/jquery-3.3.1.min.js"></script>
     <!-- Popper.JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="../../resources/js/popper.min.js"></script>
     <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <script src="../../resources/js/bootstrap.min.js"></script>
     <!-- jQuery Custom Scroller CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="../../resources/js/jquery.mCustomScrollbar.concat.min.js"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#sidebar").mCustomScrollbar({
-                theme: "minimal"
-            });
-
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar, #content').toggleClass('active');
-                $('.collapse.in').toggleClass('in');
-                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-            });
-        });
-    </script>
+    <script type="text/javascript" src="buku.js"></script>
 </body>
 
 </html>
