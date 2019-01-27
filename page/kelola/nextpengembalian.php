@@ -50,7 +50,7 @@ include '../../koneksi.php';
 
         <div class="form-group">
           <label for="exampleInputPassword1">Jumlah Denda</label>
-          <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Jumlah Denda" name="form_kode_buku_ryt" value="<?php 
+          <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Jumlah Denda" autofocus name="form_kode_buku_ryt" value="<?php 
           if (isset($_POST["form_lebih_hari"])) {
               $lebih_hari = $_POST['form_lebih_hari'];
               if($lebih_hari>0){
