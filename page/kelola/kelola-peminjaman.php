@@ -96,7 +96,7 @@
                   <br>
                   <a href="tambah-peminjaman.php"><i class="fas fa-plus"></i>Tambah</a>
                   <br>
-                <div class="table-responsive" id="data">
+                <div class="table-responsive" id="datatable">
                   <!-- table -->
                 </div> 
           </div>
@@ -113,7 +113,7 @@
     <!-- jQuery Custom Scroller CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
-    <script type="text/javascript" src="peminjaman.js"></script>
+    <script type="text/javascript" src="../../resources/js/peminjaman.js"></script>
 
 
 </html>

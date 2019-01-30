@@ -17,7 +17,7 @@ $(document).ready(function () {
               dataType: 'json',
               success: function(result) {
                 
-                $('#datatable').html(`
+                $('#data').html(`
                   <table class="table table-hover">
                     <tr>
                       <td>Kode Buku PJN</td>
@@ -34,7 +34,7 @@ $(document).ready(function () {
                 `);
 
                 $.each(result.rows, function(i, rows){
-                    $('#datatable').find('tbody').append(`
+                    $('#data').find('tbody').append(`
                         <tr>
                           <td>${rows.kode_buku_pjn}</td>
                           <td>${rows.id_pjn}</td>
