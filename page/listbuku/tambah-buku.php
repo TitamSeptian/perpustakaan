@@ -13,7 +13,7 @@
 </nav> 
   <div class="content" align="">
       <div class="login-box">
-        <form method="post" action="proses-tambah.php" enctype="multipart/form-data">
+        <form method="post" action="req-l/proses-tambah.php" enctype="multipart/form-data">
         <h3 class="txt" align="center"><b>Tambah Buku</b></h3>
         <div class="form-group">
            <div class="form-group">

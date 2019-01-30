@@ -15,7 +15,7 @@
   <div class="content" align="">
       <div class="login-box">
         <h3 class="txt" align="center"><b>Tambah Anggota</b></h3>
-        <form method="post" action="proses-tambah-anggota.php">
+        <form method="post" action="req-a/proses-tambah-anggota.php">
         <div class="form-group">
           <label for="exampleInputPassword1">Nama Lengkap</label>
           <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nama Lengkap" name="form_nama_anggota" required>

@@ -1,5 +1,5 @@
 <?php 
-include "../../koneksi.php";
+include "../../../koneksi.php";
 
   $action = isset($_POST["form_tambah"])?$_POST["form_tambah"]:"";
   if ($action){
@@ -7,7 +7,7 @@ include "../../koneksi.php";
 
             $gambar_buku = $_FILES['form_gambar_buku']['name'];
             $source = $_FILES['form_gambar_buku']['tmp_name'];
-            $folder = './../../resources/img/';
+            $folder = './../../../resources/img/';
             move_uploaded_file($source, $folder.$gambar_buku);
       $sql  =
             "INSERT INTO list_buku SET 
@@ -24,14 +24,14 @@ include "../../koneksi.php";
               echo "
                 <script>
                   alert('Buku Berahsil Ditambahkan!');
-                  window.location='list-buku2.php';
+                  window.location='../list-buku2.php';
                 </script>
                 ";
             }else{
               echo "
                 <script>
                   alert('Buku gagal Ditambahkan!');
-                  window.location='list-buku2.php';
+                  window.location='../list-buku2.php';
                 </script>
               ";
             }

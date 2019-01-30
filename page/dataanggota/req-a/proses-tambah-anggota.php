@@ -1,5 +1,5 @@
 <?php
-  include "../../koneksi.php";
+  include "../../../koneksi.php";
 
   $action = isset($_POST["form_tambah"])?$_POST["form_tambah"]:"";
   if ($action){
@@ -16,14 +16,14 @@
               echo "
                 <script>
                   alert('Selamat Anda Menjadi Anggota!');
-                  window.location='data-anggota.php';
+                  window.location='../data-anggota.php';
                 </script>
                 ";
             }else{
               echo "
                 <script>
                   alert('Gagal Membuat Akun!');
-                  window.location='data-anggota.php';
+                  window.location='../data-anggota.php';
                 </script>
               ";
             }
