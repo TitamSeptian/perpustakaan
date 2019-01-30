@@ -4,10 +4,10 @@
   $sql_select= " SELECT * FROM list_buku WHERE kode_buku = '".$kode_buku."';";
   $select = $mysqli->query($sql_select);
   $row_select=$select->fetch_array();
-
+  
+  $json = json_decode($row_select);
   
   
-
   $action = isset ($_POST["form_edit"])?$_POST["form_edit"]:"";
   if ($action) {
     
@@ -97,6 +97,11 @@
 </nav> 
   <div class="content" align="">
       <div class="login-box">
+
+
+
+
+
         <form method="post" action="" enctype="multipart/form-data">
         <h3 class="txt" align="center"><b>Edit Buku</b></h3>
         <div class="form-group">
@@ -164,5 +169,6 @@
 </body>
 </html>
 <?php 
+
 $mysqli->close();
  ?>

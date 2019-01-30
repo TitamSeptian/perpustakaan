@@ -15,7 +15,7 @@
 		    	<h3 class="txt"><b>Welcome</b></h3>
 		    	<div class="textbox">
 		    		<i class="fas fa-user"></i>
-		    		<input type="text" name="username" placeholder="Username" required>
+		    		<input type="text" name="username" placeholder="Username" autofocus required>
 		    	</div>
 
 		    	<div class="textbox">

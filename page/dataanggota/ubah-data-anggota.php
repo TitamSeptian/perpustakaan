@@ -66,31 +66,10 @@
           <br>
 
         <select class="form-control" name="form_jk_anggota">
-        <?php 
-
-        $jk_output = $row_select['jk_anggota'];
-
-        if ($jk_output == 'Laki-Laki') {
-          echo "
-          <option value='Laki-Laki'>Laki-Laki</option>
-          <option value='Wanita'>Wanita</option>
-          ";
-        }elseif ($jk_output == 'Wanita') {
-          echo "
-          <option value='Wanita'>Wanita</option>
-          <option value='Laki-Laki'>Laki-Laki</option>
-          ";
-        }else{
-          echo "
-          <option>Jenis Kelamin</option>
-          <option value='Laki-Laki'>Laki-Laki</option>
-          <option value='Wanita'>Wanita</option>
-          ";
-        }
-         ?>
-          <!--  -->
+        <?php include 'req-a/jk.php'; ?>
+        
         </select>
-<br>
+        <br>
         <div class="form-group">
           <label for="exampleInputPassword1">No.Telepon</label>
           <input type="text" class="form-control" id="exampleInputPassword1" name="form_no_tlp_anggota" placeholder="No.Telepon" value="<?php echo $row_select["no_tlp_anggota"]; ?>">

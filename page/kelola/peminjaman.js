@@ -28,7 +28,9 @@ $(document).ready(function () {
                       <td>Tanggal Pengembalian</td>
                       <td>Opsi</td>
                     </tr>
-                    <tbody></tbody>
+                    <tbody>
+
+                    </tbody>
                   </table>
 
                 `);
