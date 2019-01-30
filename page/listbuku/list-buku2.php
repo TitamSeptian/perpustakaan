@@ -88,20 +88,22 @@
                   <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form><br>
                 <a href="tambah-buku.php"><i class="fas fa-plus"></i> Tambah</a><br>
+                <div class="table-responsive">
                 <table id="myTable" class="display" style="width:100%">
                   <thead>
                     <tr>
                       <th>Gambar Buku</th>
-                      <th>Kode Buku</th>
                       <th>Judul Buku</th>
                       <th>Penulis</th>
                       <th>Penerbit</th>
                       <th>Tahun Terbit</th>
-                      <th>jumlah Halaman</th>
+                      <th>Jumlah Halaman</th>
                       <th>Sinopsis</th>
+                      <th>Opsi</th>
                     </tr>
                   </thead>
               </table>
+            </div>
           </div>
               
     <!-- Font Awesome JS -->
@@ -125,68 +127,22 @@
     $('#myTable').DataTable( {
       "ajax": "http://localhost/project_1/page/listbuku/buku-db.php",
       "columns": [
-        {"data" : "gambar_buku"},
+        {"data" : "gambar_buku", "render" : function ( data ) {
+          return '<img src="../../resources/img/'+data+'" class="img-thumbnail">';
+        }},
         {"data" : "judul_buku"},
         {"data" : "penulis"},
         {"data" : "penerbit"},
         {"data" : "tahun_terbit"},
         {"data" : "jumlah_halaman"},
         {"data" : "sinopsis"},
-        {"data" : "tanggal_entri_buku"}
+        {"data" : "kode_buku", "render" : function ( kode ) {
+          return '<a href="ubah-buku.php?kodeBuku='+kode+'" class="btn btn-primary" ><i class="fas fa-wrench"></i></a>\
+          <a href="hapus-buku.php?kodeBuku='+kode+'" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>';
+        }},
       ]
     });
   });
-    // //$(document).ready(function() {
-    // //   $('#my-ajax-table').dynatable({
-    // //     table: {
-    // //       defaultColumnIdStyle: 'underscore'
-    // //     },
-    // //     features: {
-    // //       paginate: true,
-    // //       search: true,
-    // //       recordCount: false,
-    // //       perPageSelect: false
-    // //     },
-    // //     dataset: {
-    // //       ajax: true,
-    // //       ajaxUrl: 'buku-db.php',
-    // //       ajaxOnLoad: true,
-    // //       records: []
-    // //     }
-    // //   });
-    // // });
-    // $(document).ready(function() {
-    //   // $('#data-table').DataTable( {
-    //   //   "ajax" : "buku-db.php",
-    //   //   "colunms" :[
-    //       // {"data" : "kode_buku"},
-    //       // {"data" : "gambar_buku"},
-    //       // {"data" : "judul_buku"},
-    //       // {"data" : "penulis"},
-    //       // {"data" : "penerbit"},
-    //       // {"data" : "tahun_terbit"},
-    //       // {"data" : "jumlah_halaman"},
-    //       // {"data" : "sinopsis"},
-    //       // {"data" : "tanggal_entri_buku"}
-    //   //   ]
-    //   // });
-    //   $(document).ready(function() {
-      //   $('#example').DataTable( {
-      //     "ajax": "data/objects.txt",
-      //     "columns": [
-      //         {"data" : "kode_buku"},
-      //         {"data" : "gambar_buku"},
-      //         {"data" : "judul_buku"},
-      //         {"data" : "penulis"},
-      //         {"data" : "penerbit"},
-      //         {"data" : "tahun_terbit"},
-      //         {"data" : "jumlah_halaman"},
-      //         {"data" : "sinopsis"},
-      //         {"data" : "tanggal_entri_buku"}
-      //     ]
-      //   });
-      // });
-    // });
   </script>
 </body>
 

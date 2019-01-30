@@ -5,16 +5,17 @@
 	$sql_select = "SELECT * FROM data_anggota_perpus WHERE id_anggota ='".$id_anggota."';";
 	$select = $mysqli->query($sql_select);
 	// db peminjaman
-	$peminjaman = "SELECT * FROM data_peminjaman WHERE id_anggota LIKE '".$id_anggota."';";
+	$peminjaman = "SELECT * FROM data_peminjaman WHERE id_anggota_peminjaman = '".$id_anggota."';";
+	$pjn = $mysqli->query($peminjaman);
 
-	if ($peminjaman) {
+	if ($pjn->num_rows >0) {
 		echo "
 	 			<script>
-	 				alert('Anggota gagal di hapus');
+	 				alert('Anggota gagal di hapus(Masih Meminjam Buku)');
 	 				window.location = 'data-anggota.php';
 	 			</script>
 	 		";
-	}elseif ($select->num_rows >0){
+	}else if ($select->num_rows >0){
 		$sql 	= "
 					DELETE FROM
 						data_anggota_perpus

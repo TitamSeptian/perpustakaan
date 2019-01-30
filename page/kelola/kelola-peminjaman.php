@@ -96,7 +96,7 @@
                   <br>
                   <a href="tambah-peminjaman.php"><i class="fas fa-plus"></i>Tambah</a>
                   <br>
-                <div class="table-responsive" id="datatable">
+                <div class="table-responsive" id="data">
                   <!-- table -->
                 </div> 
           </div>
