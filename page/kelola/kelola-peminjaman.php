@@ -15,7 +15,7 @@
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="../../resources/js/jquery.mCustomScrollbar.min.css">
     <link rel="stylesheet" href="../../resources/css/datatables.css"/>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/>
+    <link rel="stylesheet" href="../../resources/css/jquery.dataTables.min.css"/>
 
     <!-- Font Awesome JS -->
     <script defer src="../../resources/js/solid.js"></script>
@@ -102,8 +102,8 @@
                   <table id="myTable" class="display" style="width:100%">
                     <thead>
                       <tr>
-                        <td>Kode Buku PJN</td>
                         <td>ID PJN</td>
+                        <td>Kode Buku PJN</td>
                         <td>ID Anggota Peminjaman</td>
                         <td>Tanggal Entri PJN</td>
                         <td>Jumlah Hari PJN</td>
@@ -119,17 +119,14 @@
     </div>
 
   </body>
-    <!-- jQuery  -->
-    <script src="../../resources/js/jquery-3.3.1.min.js"></script>
-    <!-- Popper.JS -->
-    <script src="../../resources/js/popper.min.js"></script>
-    <!-- Bootstrap JS -->
-    <script src="../../resources/js/bootstrap.min.js"></script>
-    <!-- jQuery Custom Scroller CDN -->
-    <script src="../../resources/js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="../../resources/js/jquery.dataTables.min.js"></script>
-
-    <script type="text/javascript" src="peminjaman.js"></script>
-
-
+  <!-- jQuery  -->
+  <script src="../../resources/js/jquery-3.3.1.min.js"></script>
+  <!-- Popper.JS -->
+  <script src="../../resources/js/popper.min.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="../../resources/js/bootstrap.min.js"></script>
+  <!-- jQuery Custom Scroller CDN -->
+  <script src="../../resources/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../../resources/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="peminjaman.js"></script>
 </html>

@@ -26,7 +26,7 @@ include '../../koneksi.php';
         echo "
         <script>
         alert('Buku Gagal Dipinjamkan !');
-        window.location = 'kelola-peminjaman.php?id=".$id_pjn."';
+        window.location = 'kelola-peminjaman.php';
         </script>
         ";
       }
@@ -37,9 +37,9 @@ include '../../koneksi.php';
   <title>e-Perpustakaan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../resources/css/ubah-data-peminjaman.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous"> 
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" /> 
+  <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../resources/css/all.css"> 
+  <link rel="stylesheet" href="../../resources/css/select2.min.css" /> 
 </head>
 <body style="background-color: #1e1e1e;">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -73,13 +73,13 @@ include '../../koneksi.php';
         <div class="form-group">
           <label for="exampleInputPassword1">Kode BUKU</label>
           <select class="form-control" id="id-select-2" name="form_kode_buku_pjn" required>
-             <option  value="<?php echo $row_select["kode_buku_pjn"]; ?>"><?php echo $row_select["kode_buku_pjn"]; ?></option>
+            <option  value="<?php echo $row_select["kode_buku_pjn"]; ?>"><?php echo $row_select["id_anggota_peminjaman"]; ?></option>
             <?php 
-              $view_buku = mysqli_query($mysqli, "SELECT * FROM data_anggota_perpus ;");
-              $num_result_buku = $view_buku->num_rows;
-              if ($num_result_buku >0) {
-                while ($row_buku = $view_buku->fetch_assoc()) {?>
-                  <option value="<?php echo $row_buku['kode_buku']; ?>"><?php echo $row_id['kode_buku']; ?></option>
+              $view_id = mysqli_query($mysqli, "SELECT * FROM list_buku ;");
+              $num_result_id = $view_id->num_rows;
+              if ($num_result_id >0) {
+                while ($row_id = $view_id->fetch_assoc()) {?>
+                  <option value="<?php echo $row_id['kode_buku']; ?>"><?php echo $row_id['kode_buku']; ?></option>
                 <?php }
               }
              ?>
@@ -101,8 +101,8 @@ include '../../koneksi.php';
   </div>
 
 </body>
-<script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<script src="../../resources/js/jquery-3.3.1.min.js"></script>
+<script src="../../resources/js/select2.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function() {
     $("#id-select").select2({

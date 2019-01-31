@@ -49,7 +49,7 @@ session_start();
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel" style="margin-top: 50px;">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100" src="resources/img/book-slide-1.jpg" alt="First slide" width="800" height="642">
+          <img class="d-block w-100" src="resources/img/book-slide-1.jpg" alt="First slide" width="805" height="642">
            <div class="carousel-caption text-left">
             <h3>List Buku</h3>
             <p style="color: #fff">Berisi kumpulan buku-buku yang telah terdaftar, terdapat pula didalamnya keterangan-keterangan buku tersebut maupun sinopsis dari buku yang terdaftar.</p>
@@ -57,7 +57,7 @@ session_start();
             </div>
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="resources/img/book-slide-2.jpg" alt="Second slide" width="800" height="642">
+          <img class="d-block w-100" src="resources/img/book-slide-2.jpg" alt="Second slide" width="805" height="642">
          <div class="carousel-caption">
                 <h1>Data Anggota.</h1>
                 <p style="color: #fff">Daftarkan orang yang akan meminjam buku disini, maka dari itu daftarkan terlebih dahulu agar menjadi anggota tetap, apabila jika suatu saat akan meminjam kembali, pengguna sudah memiliki nomer ID Anggota.</p>
@@ -65,7 +65,7 @@ session_start();
         </div>
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="resources/img/book-slide-3.jpg" alt="Third slide" width="800" height="642">
+          <img class="d-block w-100" src="resources/img/book-slide-3.jpg" alt="Third slide" width="805" height="642">
           <div class="carousel-caption text-right">
             <h1>Riwayat.</h1>
             <p  style="color: #fff">Melihat riwayat beberapa anggota yang sudah mengembalikan buku yang telah dipinjam.</p>
