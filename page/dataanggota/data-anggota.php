@@ -1,42 +1,3 @@
-<?php
-include '../../koneksi.php';
-session_start();
- 
- $data = "";
- $view = $mysqli->query("SELECT * FROM data_anggota_perpus
- ORDER BY id_anggota ASC;");
- $num_result = $view->num_rows;
- if($num_result > 0){
- $no = 1;
- while($row = $view->fetch_assoc()){
- extract($row);
-
- $data.="
- <tr>
- <td>".$no."</td>
- <td>{$nama_anggota}</td>
- <td>{$alamat_anggota}</td>
- <td>{$jk_anggota}</td>
- <td>{$no_tlp_anggota}</td>
- <td>{$id_anggota}</td>
-<td>
-  <a href='ubah-data-anggota.php?id={$id_anggota}'>
-    <button type='button' class='btn btn-primary'><i class='fas fa-wrench'></i></button>
-  </a>
-  -
-  <a href='hapus-data-anggota.php?id={$id_anggota}' onclick='return confirm(\" Apakah benar laporan akan dihapus ? \");'>
-    <button type='button' class='btn btn-danger'><i class='fas fa-trash-alt'></i></button>
-  </a>
-</td>
- 
- </tr>
- ";
- $no++;
- }
- }else{
- $data = "Daftar Kosong.";
- }
- ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,10 +13,10 @@ session_start();
     <link rel="stylesheet" href="../../resources/css/data-anggota.css">
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="../../resources/css/jquery.mCustomScrollbar.min.css">
-
+    <link rel="stylesheet" href="../../resources/css/datatables.css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/>
     <!-- Font Awesome JS -->
-    <script defer src="../../resources/js/solid.js"></script>
-    <script defer src="../../resources/js/fontawesome.js"></script>
+    
 
 </head>
 
@@ -136,31 +97,24 @@ session_start();
           <a href="tambah-data-anggota.php"><i class="fas fa-plus"></i>Tambah</a>
                 <div class="table-responsive">
                   <br>
-                <table class="table table-hover">
+                <table id="myTable" class="display" style="width:100%">
                   <thead>
                     <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Nama</th>
-                      <th scope="col">Alamat</th>
-                      <th scope="col">JK</th>
-                      <th scope="col">No Tlp</th>
-                      <th scope="col">ID Anggota</th>
-                      <th scope="col">Aksi</th>
+                      <th>Nama</th>
+                      <th>Alamat</th>
+                      <th>JK</th>
+                      <th>No Tlp</th>
+                      <th>ID Anggota</th>
+                      <th>Aksi</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <?php
-                     echo $data;
-                     ?>
-                  </tbody>
-
                 </table>
               </div>
           </div>
         </div>
     </div>
-
-
+    <script defer src="../../resources/js/solid.js"></script>
+    <script defer src="../../resources/js/fontawesome.js"></script>
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="../../resources/js/jquery-3.3.1.min.js"></script>
     <!-- Popper.JS -->
@@ -169,8 +123,24 @@ session_start();
     <script src="../../resources/js/bootstrap.min.js"></script>
     <!-- jQuery Custom Scroller CDN -->
     <script src="../../resources/js/jquery.mCustomScrollbar.concat.min.js"></script>
-
+    <script src="../../resources/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
+      $(document).ready(function() {
+        $('#myTable').DataTable( {
+          "ajax": "anggota-db.php",
+          "columns": [
+            {"data" : "nama_anggota"},
+            {"data" : "alamat_anggota"},
+            {"data" : "jk_anggota"},
+            {"data" : "no_tlp_anggota"},
+            {"data" : "id_anggota"},
+            {"data" : "id_anggota", "render" : function ( id ) {
+              return '<a href="ubah-data-anggota.php?id='+id+'" class="btn btn-primary" ><i class="fas fa-wrench"></i></a>\
+              <a href="hapus-data-anggota.php?id='+id+'" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>';
+            }},
+          ]
+        });
+      });
         $(document).ready(function () {
             $("#sidebar").mCustomScrollbar({
                 theme: "minimal"
@@ -184,14 +154,14 @@ session_start();
         });
     </script>
     <script>   
-function hapus_confirm(){
- var msg = "Apakah anda yakin untuk menghapusnya"
- agree = confirm(msg)
-  if (agree)
-    return true
-  else
-    return false
-}
+      function hapus_confirm(){
+       var msg = "Apakah anda yakin untuk menghapusnya"
+       agree = confirm(msg)
+        if (agree)
+          return true
+        else
+          return false
+        }
     </script>
 </body>
 

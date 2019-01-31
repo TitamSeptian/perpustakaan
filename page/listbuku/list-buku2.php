@@ -102,9 +102,21 @@
                       <th>Opsi</th>
                     </tr>
                   </thead>
-              </table>
+                  <tfoot>
+                    <tr>
+                      <th>Gambar Buku</th>
+                      <th>Judul Buku</th>
+                      <th>Penulis</th>
+                      <th>Penerbit</th>
+                      <th>Tahun Terbit</th>
+                      <th>Jumlah Halaman</th>
+                      <th>Sinopsis</th>
+                      <th>Opsi</th>
+                    </tr>
+                  </tfoot>
+                </table>
+                </div>
             </div>
-          </div>
               
     <!-- Font Awesome JS -->
   <script src="../../resources/js/jquery-3.3.1.js"></script>
@@ -143,6 +155,19 @@
       ]
     });
   });
+  $(document).ready(function () {
+  $("#sidebar").mCustomScrollbar({
+      theme: "minimal"
+  });
+
+  $('#sidebarCollapse').on('click', function () {
+      $('#sidebar, #content').toggleClass('active');
+      $('.collapse.in').toggleClass('in');
+      $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+      
+  });
+});
+
   </script>
 </body>
 

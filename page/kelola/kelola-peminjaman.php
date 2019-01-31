@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="../../resources/css/kelola-peminjaman.css">
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="../../resources/js/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="../../resources/css/datatables.css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/>
 
     <!-- Font Awesome JS -->
     <script defer src="../../resources/js/solid.js"></script>
@@ -96,8 +98,21 @@
                   <br>
                   <a href="tambah-peminjaman.php"><i class="fas fa-plus"></i>Tambah</a>
                   <br>
-                <div class="table-responsive" id="data">
-                  <!-- table -->
+                <div class="table-responsive">
+                  <table id="myTable" class="display" style="width:100%">
+                    <thead>
+                      <tr>
+                        <td>Kode Buku PJN</td>
+                        <td>ID PJN</td>
+                        <td>ID Anggota Peminjaman</td>
+                        <td>Tanggal Entri PJN</td>
+                        <td>Jumlah Hari PJN</td>
+                        <td>Tanggal Pengembalian</td>
+                        <td>Opsi</td>
+                      </tr>
+                    </thead>
+
+                  </table>
                 </div> 
           </div>
         </div>
@@ -112,8 +127,9 @@
     <script src="../../resources/js/bootstrap.min.js"></script>
     <!-- jQuery Custom Scroller CDN -->
     <script src="../../resources/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="../../resources/js/jquery.dataTables.min.js"></script>
 
-    <script type="text/javascript" src="../../resources/js/peminjaman.js"></script>
+    <script type="text/javascript" src="peminjaman.js"></script>
 
 
 </html>
