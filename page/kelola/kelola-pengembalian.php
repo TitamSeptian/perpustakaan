@@ -85,49 +85,6 @@
             </div>
           </div>
             <div class="container-fluid">
-              <?php   
-                include "../../koneksi.php";
-                  //database peminjaman
-                  $id_pjn = isset ($_GET["id"])?$_GET["id"]:"";
-                  $sql_select_pjn= " SELECT * FROM data_peminjaman WHERE id_pjn = '".$id_pjn."';";
-                  $select_pjn = $mysqli->query($sql_select_pjn);
-                  $row_select_pjn=$select_pjn->fetch_array();
-                  //database anggota
-                  //$id_anggota_x = isset ($_GET["id_x"])?$_GET["id_x"]:"";
-                  $sql_select_x= "SELECT * FROM data_anggota_perpus WHERE id_anggota='".$_GET['id_x']."'";
-                  $select_x = $mysqli->query($sql_select_x);
-                  $row_select_x=$select_x->fetch_array();
-                  //database buku
-                  $kodeBuku = isset ($_GET["kodeBuku"])?$_GET["kodeBuku"]:"";
-                  $sql_select_buku= " SELECT * FROM list_buku WHERE kode_buku = '".$kodeBuku."';";
-                  $select_buku = $mysqli->query($sql_select_buku);
-                  $row_select_buku=$select_buku->fetch_array();
-
-                  $id_pjn_ryt =$row_select_pjn['id_pjn'];
-                  $id_anggota_ryt =$row_select_x['id_anggota'];
-                  $kode_buku_ryt =$row_select_buku['kode_buku'];
-                  $judul_buku_ryt =$row_select_buku['judul_buku'];
-                  $tanggal_entri_pjn_ryt =$row_select_pjn['tanggal_entri_pjn'];
-                  $jumlah_hari_pjn_ryt =$row_select_pjn['jumlah_hari_pjn'];
-                  $penulis_ryt = $row_select_buku['penulis'];
-
-
-                  $data="
-                    <tr>
-                      <td>{$id_pjn_ryt}</td>
-                      <td>{$id_anggota_ryt}</td>
-                      <td>{$kode_buku_ryt}</td>
-                      <td>{$judul_buku_ryt}</td>
-                      <td>{$penulis_ryt}</td>
-                      <td>{$tanggal_entri_pjn_ryt}</td>
-                      <td>{$jumlah_hari_pjn_ryt}</td>
-                      <td>
-                        <a href='pengembalian.php?id={$id_pjn_ryt}&id_x={$id_anggota_ryt}&kodeBuku={$kode_buku_ryt}' onclick='return confirm(\" Apakah Anda Benar Buku Akan di Kembalikan ? \");><button type='button' class='btn btn-warning'><i class='fas fa-check'></i></button></a>
-                      </td>
-                    </tr>
-                  ";
-               ?>
-
                <form class="form-inline">
                   <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                   <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -141,25 +98,34 @@
                   <tr>
                     <th scope="col">ID Peminjam</th>
                     <th scope="col">ID Anggota</th>
+                    <th scope="col">Nama</th>
                     <th scope="col">Kode buku</th>
                     <th scope="col">Judul Buku</th>
                     <th scope="col">Penulis</th>
                     <th scope="col">Tanggal Pinjam</th>
                     <th scope="col">Hari Pinjam</th>
+                    <th scope="col">Tanggal Pengembalian </th>
                     <th scope="col">Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <?php   
-                    echo $data;
-                   ?>
+                  <th id="th1"><!-- id peminjaman--></th>
+                  <th id="th2"><!-- id anggota--></th>
+                  <th id="th3"><!-- nama peminjam--></th>
+                  <th id="th4"><!-- kode_buku--></th>
+                  <th id="th5"><!-- judul--></th>
+                  <th id="th6"><!-- penulis--></th>
+                  <th id="th7"><!-- tanggal_pinjman--></th>
+                  <th id="th8"><!--  hari_pinjma--></th>
+                  <th id="th9"><!--  tanggal kembali--></th>
+                  <th id="th10"><!-- aksi--></th>
                 </tbody>
             </div>
         </div>
       </div>
   </div>
 
-  <!-- jQuery CDN - Slim version (=without AJAX) -->
+  <!-- jQuery CDN - Slim version -->
   <script src="../../resources/js/jquery-3.3.1.min.js"></script>
   <!-- Popper.JS -->
   <script src="../../resources/js/popper.min.js"></script>
@@ -169,6 +135,11 @@
   <script src="../../resources/js/jquery.mCustomScrollbar.concat.min.js"></script>
 
   <script type="text/javascript">
+      var urlParams = new URLSearchParams(window.location.search);
+      var id = urlParams.get('id');
+      var id_x = urlParams.get('id_x');
+      var kodeBuku = urlParams.get('kodeBuku');
+      //console.info(id,id_x,kodeBuku);
       $(document).ready(function () {
           $("#sidebar").mCustomScrollbar({
               theme: "minimal"
@@ -179,6 +150,43 @@
               $('.collapse.in').toggleClass('in');
               $('a[aria-expanded=true]').attr('aria-expanded', 'false');
           });
+          $.ajax({
+            type:'get',
+            url:"http://localhost/project_1/page/kelola/peminjaman-db.php?id="+id+"",
+            dataType:'json',
+            success:function(result){
+              $.each(result.data, function(i, data){
+                $('#th1').html(""+data.id_pjn+"");
+                $('#th2').html(""+data.id_anggota_peminjaman+"");
+                $('#th4').html(""+data.kode_buku_pjn+"");
+                $('#th7').html(""+data.tanggal_entri_pjn+"");
+                $('#th8').html(""+data.jumlah_hari_pjn+"");
+                $('#th9').html(""+data.tgl_pengembalian+"");
+              });
+            }
+          });
+          $.ajax({
+            type:'get',
+            url:"../dataanggota/anggota-db.php?id_x="+id_x+"",
+            dataType:'json',
+            success:function(result){
+              $.each(result.data, function(i, data){
+                $('#th3').html(""+data.nama_anggota+"");
+              });
+            }
+          });
+          $.ajax({
+            type:'get',
+            url:"../listbuku/buku-db.php?kodeBuku="+kodeBuku+"",
+            dataType:'json',
+            success:function(result){
+              $.each(result.data, function(i, data){
+                $('#th5').html(""+data.judul_buku+"");
+                $('#th6').html(""+data.penulis+"");
+              });
+            }
+          });
+          $('#th10').html('<a href="pengembalian.php?id='+id+'&id_x='+id_x+'&kodeBuku='+kodeBuku+'"><button type="button" class="btn btn-warning"><i class="fas fa-check"></i></button></a>')
       });
   </script>
 </body>

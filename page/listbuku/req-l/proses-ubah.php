@@ -1,5 +1,5 @@
 <?php
-  include "../../koneksi.php";
+  include "../../../koneksi.php";
   $kode_buku = isset ($_GET["kodeBuku"])?$_GET["kodeBuku"]:"";
   $sql_select= " SELECT * FROM list_buku WHERE kode_buku = '".$kode_buku."';";
   $select = $mysqli->query($sql_select);
@@ -13,7 +13,7 @@
     
     $nama_file = $_FILES['form_gambar_buku']['name'];
     $source = $_FILES['form_gambar_buku']['tmp_name'];
-    $folder = './../../resources/img/';
+    $folder = './../....//resources/img/';
     
     if($nama_file != ''){
     move_uploaded_file($source, $folder.$nama_file);
@@ -33,14 +33,14 @@
       echo "
       <script>
       alert('Buku berhasil diperbaharui !');
-      window.location = 'list-buku2.php?kodeBuku=".$kode_buku."';
+      window.location = '../list-buku2.php;
       </script>
       ";
       }else{
         echo "
         <script>
         alert('Buku gagal diperbaharui !');
-        window.location = 'list-buku2.php?kodeBuku=".$kode_buku."';
+        window.location = '../list-buku2.php;
         </script>
         ";
       }
@@ -62,14 +62,14 @@
       echo "
       <script>
       alert('Buku berhasil diperbaharui !');
-      window.location = 'list-buku2.php?kodeBuku=".$kode_buku."';
+      window.location = '../list-buku2.php;
       </script>
       ";
       }else{
         echo "
         <script>
         alert('Buku gagal diperbaharui !');
-        window.location = 'list-buku2.php?kodeBuku=".$kode_buku."';
+        window.location = '../list-buku2.php;
         </script>
         ";
       }

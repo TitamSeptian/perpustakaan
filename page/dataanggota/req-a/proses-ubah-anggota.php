@@ -1,10 +1,10 @@
 <?php
-  include "../../koneksi.php";
+  include "../../../koneksi.php";
   $id_anggota = isset ($_GET["id"])?$_GET["id"]:"";
   $sql_select= " SELECT * FROM data_anggota_perpus WHERE id_anggota = '".$id_anggota."';";
   $select = $mysqli->query($sql_select);
   $row_select=$select->fetch_array();
-
+  
   $action = isset ($_POST["form_edit"])?$_POST["form_edit"]:"";
   if ($action) {
     $id_anggota = $mysqli->real_escape_string($_POST['form_id_anggota']);
@@ -20,14 +20,14 @@
       echo "
       <script>
       alert('Data Berhasil diperbaharui !');
-      window.location = 'data-anggota.php?id=".$id_anggota."';
+      window.location = '../data-anggota.php;
       </script>
       ";
       }else{
         echo "
         <script>
         alert('Data gagal diperbaharui !');
-        window.location = 'data-anggota.php?id=".$id_anggota."';
+        window.location = '../data-anggota.php;
         </script>
         ";
       }

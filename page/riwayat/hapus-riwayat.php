@@ -16,7 +16,7 @@
 			echo"
 				<script>
 					alert('Riwayat berhasil di hapus !');
-					window.location = '../../Dashboard.php';
+					window.location = 'riwayat.php';
 				</script>
 			";
 		}else{

@@ -1,4 +1,4 @@
-<?php include 'req-a/proses-ubah-anggota.php'; ?>
+<!DOCTYPE html>
 <html>
 <head>
   <title>e-Perpustakaan</title>
@@ -12,40 +12,72 @@
   <a class="navbar-brand" href="../../Dashboard.php"><h3><b>E-Perpustakaan</b></h3></a>
 </nav> 
   <div class="content" align="">
-    <form method="POST">
+    <form method="post" id="fmA">
       <div class="login-box">
         <h3 class="txt" align="center"><b>Ubah Data Anggota</b></h3>
         <div class="row">
           <div class="col">
             <label for="exampleInputPassword1">ID Anggota</label>
-            <input type="text" class="form-control" placeholder="ID Anggota" name="form_id_anggota" value="<?php echo $row_select["id_anggota"]; ?>" readonly>
+            <input type="text" class="form-control" placeholder="ID Anggota" name="form_id_anggota" id="id" readonly>
           </div>
           <div class="col">
             <label for="exampleInputPassword1">Nama Lengkap</label>
-            <input type="text" class="form-control" placeholder="Nama Lengkap" name="form_nama_anggota" value="<?php echo $row_select["nama_anggota"]; ?>">
+            <input type="text" class="form-control" placeholder="Nama Lengkap" name="form_nama_anggota" id="nmAnggota">
           </div>
         </div>
 
         <div class="form-group">
           <label for="exampleInputPassword1">Alamat</label>
-          <textarea class="form-control" id="exampleInputPassword1" placeholder="Alamat" name="form_alamat_anggota"><?php   echo $row_select["alamat_anggota"]; ?></textarea>
+          <textarea class="form-control" placeholder="Alamat" name="form_alamat_anggota" id="alamat"></textarea>
           <br>
 
-        <select class="form-control" name="form_jk_anggota">
-        <?php include 'req-a/jk.php'; ?>
+        <select class="form-control" name="form_jk_anggota" id="jk">
         
         </select>
+
         <br>
         <div class="form-group">
           <label for="exampleInputPassword1">No.Telepon</label>
-          <input type="text" class="form-control" id="exampleInputPassword1" name="form_no_tlp_anggota" placeholder="No.Telepon" value="<?php echo $row_select["no_tlp_anggota"]; ?>">
+          <input type="text" class="form-control" name="form_no_tlp_anggota" placeholder="No.Telepon" id="noTlp">
         </div>
 
         <div class="" align="center">
           <input type="submit" name="form_edit" value="Perbaharui" class="btn btn-dark">
         <small id="emailHelp" class="form-text text-muted">Pastikan semua form telah terisi sebelum menekan tombol ubah!.</small>  
         </div>
+      </div>
   </div>
 </form>
+<script src="../../resources/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+  var urlParams = new URLSearchParams(window.location.search);
+  var id = urlParams.get('id');
+  var lk = " <option value='Laki-Laki'>Laki-Laki</option><option value='Wanita'>Wanita</option>";
+  var wn = "<option value='Wanita'>Wanita</option><option value='Laki-Laki'>Laki-Laki</option>";
+  var els = "<option>Jenis Kelamin</option><option value='Laki-Laki'>Laki-Laki</option><option value='Wanita'>Wanita</option>";
+  $(document).ready(function () {
+    $.ajax({
+      type:'get',
+      url:'anggota-db.php?id='+id+'',
+      dataType:'json',
+      success:function (result) {
+        $.each(result.data, function (i, data) {
+          $('#id').attr("value", ""+data.id_anggota+"");
+          $('#nmAnggota').attr("value", ""+data.nama_anggota+"");
+          $('#alamat').html(""+data.alamat_anggota+"");
+          if (data.jk_anggota == 'Laki-Laki') {
+            $('#jk').html(lk);
+          }else if (data.jk_anggota == 'Wanita') {
+            $('#jk').html(wn);
+          }else{
+            $('#jk').html(els);
+          }
+          $('#noTlp').attr("value", ""+data.no_tlp_anggota+"");
+          $('#fmA').attr("action", "req-a/proses-ubah-anggota.php?id="+id+"");
+        });
+      }
+    });
+  });
+</script>
 </body>
 </html>

@@ -111,13 +111,25 @@
                         <td>Opsi</td>
                       </tr>
                     </thead>
-
+                    <tfoot>
+                      <tr>
+                        <td>ID PJN</td>
+                        <td>Kode Buku PJN</td>
+                        <td>ID Anggota Peminjaman</td>
+                        <td>Tanggal Entri PJN</td>
+                        <td>Jumlah Hari PJN</td>
+                        <td>Tanggal Pengembalian</td>
+                        <td>Opsi</td>
+                      </tr>
+                    </tfoot>
                   </table>
                 </div> 
           </div>
         </div>
     </div>
-
+    <select>
+      <option></option>
+    </select>
   </body>
   <!-- jQuery  -->
   <script src="../../resources/js/jquery-3.3.1.min.js"></script>

@@ -1,45 +1,3 @@
-<?php 
-include '../../koneksi.php'; 
-session_start(); 
- $jumlah_data_halaman = 5;
-$data_halaman= $mysqli->query("SELECT * FROM riwayat");
-$jumlah_data =mysqli_num_rows($data_halaman);
-$jumlah_halaman = ceil($jumlah_data/$jumlah_data_halaman);
-$halaman_aktif = (isset($_GET["page"])) ? $_GET["page"] : 1;
-$awal_data = ($jumlah_data_halaman * $halaman_aktif) - $jumlah_data_halaman;
-
-
-$data = "";
- $view = $mysqli->query("SELECT * FROM riwayat ORDER BY id_pjn_ryt  LIMIT $awal_data,$jumlah_data_halaman;");
- $num_result = $view->num_rows;
- if($num_result > 0){
- $no = 1;
- while($row = $view->fetch_assoc()){
- extract($row);
-
- $data.="
- <tr>
- <td>".$no."</td>
- <td>{$id_pjn_ryt}</td>
- <td>{$id_anggota_ryt}</td>
- <td>{$kode_buku_ryt}</td>
- <td>{$tgl_pjn_ryt}</td>
- <td>{$jumlah_hari_pjn_ryt}</td>
- <td>{$tgl_pengembalian_ryt}</td>
-<td>
-  <a href='hapus-riwayat.php?id={$id_pjn_ryt}' onclick='return confirm(\" Yakin riwayat akan dihapus ? \")>
-    <button type='button' class='btn btn-primary'><i class='fas fa-trash-alt'></i></button>
-  </a>
-</td>
- 
- </tr>
- ";
- $no++;
- }
- }else{
- $data = "<h3><b>Riwayat Kosong.</b></h3>";
- }
- ?>
 <!DOCTYPE html>
 <html>
 
@@ -60,6 +18,8 @@ $data = "";
     <!-- Font Awesome JS -->
     <script defer src="../../resources/js/solid.js"></script>
     <script defer src="../../resources/js/fontawesome.js"></script>
+    <link rel="stylesheet" href="../../resources/css/datatables.css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/>
 
 </head>
 
@@ -144,41 +104,33 @@ $data = "";
           <br>
                 <div class="table-responsive">
                   <br>
-                <table class="table table-hover">
+                <table id="myTable" class="display" style="width:100%">
                   <thead>
                     <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">ID Peminjam</th>
-                      <th scope="col">ID Anggota</th>
-                      <th scope="col">Kode Buku</th>
-                      <th scope="col">Tanggal Pinjam</th>
-                      <th scope="col">Lama Hari Pinjam</th>
-                      <th scope="col">Tanggal Pengembalian</th>
-
-                      <th scope="col">Aksi</th>
+                      <th>ID Peminjam</th>
+                      <th>ID Anggota</th>
+                      <th>Kode Buku</th>
+                      <th>Tanggal Pinjam</th>
+                      <th>Lama Hari Pinjam</th>
+                      <th>Tanggal Pengembalian</th>
+                      <th>Anggota Mengembalikan</th>
+                      <th>Aksi</th>
                     </tr>
                   </thead>
-                  <tbody>
-                      <?php   
-                        echo $data;
-                       ?>
-                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th>ID Peminjam</th>
+                      <th>ID Anggota</th>
+                      <th>Kode Buku</th>
+                      <th>Tanggal Pinjam</th>
+                      <th>Lama Hari Pinjam</th>
+                      <th>Tanggal Pengembalian</th>
+                      <th>Anggota Mengembalikan</th>
+                      <th>Aksi</th>
+                    </tr>
+                  </tfoot>
                 </table>
               </div>
-              <?php  if($halaman_aktif>1): ?>
-                 <a href="?page=<?php echo $halaman_aktif - 1 ?>">&laquo;</a>
-                <?php   endif; ?>
-                 <?php  for ($i=1; $i <= $jumlah_halaman ; $i++) : ?>
-                    <?php   if($i == $halaman_aktif): ?>
-                        <a  style="color: red; font-weight: bold;" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
-                    <?php   else : ?>
-                        <a  href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
-                    <?php   endif ; ?>
-                <?php   endfor; ?>
-                
-                <?php   if($halaman_aktif<$jumlah_halaman): ?>
-                 <a href="?page=<?php echo $halaman_aktif + 1 ?>">&raquo;</a>
-                <?php   endif; ?>
           </div>
         </div>
     </div>
@@ -191,29 +143,45 @@ $data = "";
     <script src="../../resources/js/bootstrap.min.js"></script>
     <!-- jQuery Custom Scroller CDN -->
     <script src="../../resources/js/jquery.mCustomScrollbar.concat.min.js"></script>
-
+    <script src="../../resources/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(function () {
-            $("#sidebar").mCustomScrollbar({
-                theme: "minimal"
-            });
-
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar, #content').toggleClass('active');
-                $('.collapse.in').toggleClass('in');
-                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-            });
+      function hapus_confirm(){
+      var msg = "Apakah anda yakin untuk menghapusnya"
+      agree = confirm(msg)
+        if (agree)
+          return true
+        else
+          return false
+      }
+      $(document).ready(function () {
+        $("#sidebar").mCustomScrollbar({
+            theme: "minimal"
         });
+
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar, #content').toggleClass('active');
+            $('.collapse.in').toggleClass('in');
+            $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+        });
+        $('#myTable').DataTable( {
+          "ajax": "riwayat-db.php",
+          "columns": [
+            {"data" : "id_pjn_ryt"},
+            {"data" : "id_anggota_ryt"},
+            {"data" : "kode_buku_ryt"},
+            {"data" : "tgl_pjn_ryt"},
+            {"data" : "jumlah_hari_pjn_ryt"},
+            {"data" : "tgl_pengembalian_ryt"},
+            {"data" : "tgl_peng_user"},
+            {"data" : "id_pjn_ryt", "render" : function ( id ) {
+              return '<a href="hapus-riwayat.php?id='+id+'" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>';
+            }},
+          ]
+        });
+      });
     </script>
     <script>   
-function hapus_confirm(){
- var msg = "Apakah anda yakin untuk menghapusnya"
- agree = confirm(msg)
-  if (agree)
-    return true
-  else
-    return false
-}
+
     </script>
 </body>
 

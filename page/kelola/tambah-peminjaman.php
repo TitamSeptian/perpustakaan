@@ -23,7 +23,7 @@
             <?php include 'req-k/select2.anggota.php'; ?>
           </select>
         </div>
-
+        
         <div class="form-group">
           <label for="exampleInputPassword1">Buku</label>
           <select class="form-control" id="buku_select2" name="form_kode_buku_pjn" required>
@@ -36,6 +36,20 @@
           <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Jumlah Hari" name="form_jumlah_hari_pjn" autocomplete="off" required>
         </div>
         <br>
+        <!-- <select>
+          <option>
+            <label>aaaaa</label><br>
+            <h2>nama</h2>
+          </option>
+           <option>
+            <label>aaaaa</label><br>
+            <h2>nama</h2>
+          </option>
+           <option>
+            <label>aaaaa</label><br>
+            <h2>nama</h2>
+          </option>
+        </select> -->
         <div class="" align="center">
           <input type="submit" name="form_tambah" value="Tambah" class="btn btn-dark">
         <small id="emailHelp" class="form-text text-muted">Pastikan semua form telah terisi sebelum menekan tombol tambah!.</small>  

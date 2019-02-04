@@ -1,4 +1,3 @@
-<?php   include 'req-l/proses-ubah.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +13,7 @@
 </nav> 
   <div class="content" align="">
       <div class="login-box">
-        <form method="post" action="" enctype="multipart/form-data">
+        <form method="post"  id="fmBuku" enctype="multipart/form-data">
         <h3 class="txt" align="center"><b>Edit Buku</b></h3>
         <div class="form-group">
            <div class="form-group">
@@ -25,39 +24,40 @@
           <span id="custom-text">No file choosen, yet.</span>
           <br>
 
-          <img src="../../resources/img/<?php echo $row_select["gambar_buku"];?>" style="margin-left:40px; margin-top: 30px; width:500px; height:300px;">
+          <img id="gambar" style="margin-left:40px; margin-top: 30px; width:500px; height:300px;">
 		
         </div>
           <label for="exampleInputPassword1">Judul Buku</label>
-          <input type="text" class="form-control" value="<?php echo $row_select["judul_buku"];?>" id="exampleInputPassword1" placeholder="Judul Buku" name="form_judul_buku">
+          <input type="text" class="form-control"  placeholder="Judul Buku" name="form_judul_buku" id="jBuku">
         </div>
         <div class="row">
           <div class="col">
             <label for="exampleInputPassword1">Penerbit</label>
-            <input type="text" class="form-control" placeholder="Penerbit" name="form_penerbit" value="<?php echo $row_select["penerbit"];?>">
+            <input type="text" class="form-control" placeholder="Penerbit" name="form_penerbit" id="penerbit">
           </div>
           <div class="col">
             <label for="exampleInputPassword1">Tahun Terbit</label>
-            <input type="text" class="form-control" placeholder="Tahun Terbit" name="form_tahun_terbit" value="<?php echo $row_select["tahun_terbit"];?>">
+            <input type="text" class="form-control" placeholder="Tahun Terbit" name="form_tahun_terbit" id="tTerbit">
           </div>
         </div>
         <div class="row">
           <div class="col">
             <label for="exampleInputPassword1">Penulis</label>
-            <input type="text" class="form-control" placeholder="Penulis" name="form_penulis" value="<?php echo $row_select["penulis"];?>">
+            <input type="text" class="form-control" placeholder="Penulis" name="form_penulis" id="penulis">
           </div>
           <div class="col">
             <label for="exampleInputPassword1">Jumlah Halaman</label>
-            <input type="text" class="form-control" placeholder="Halaman" name="form_jumlah_Halaman" value="<?php echo $row_select["jumlah_halaman"];?>" >
+            <input type="text" class="form-control" placeholder="Halaman" name="form_jumlah_Halaman" id="jHalaman">
           </div>
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">Sinopsis</label>
-          <textarea class="form-control" id="exampleInputPassword1" placeholder="Sinopsis" name="form_sinopsis"><?php echo $row_select["sinopsis"];?></textarea>
+          <textarea class="form-control" placeholder="Sinopsis" name="form_sinopsis" id="sinopsis"></textarea>
         </div>
         <div class="" align="center">
-            <input type="submit" name="form_edit" class="btn btn-dark" value="ubah">
-        <small id="emailHelp" class="form-text text-muted">Pastikan semua form telah terisi sebelum menekan tombol selanjutnya!.</small> </div>
+            <input type="submit" name="form_edit" class="btn btn-dark" value="Edit">
+        <small id="emailHelp" class="form-text text-muted">Pastikan semua form telah terisi sebelum menekan tombol selanjutnya!.</small> 
+        </div>
       </form>
       </div>
     </div>
@@ -79,6 +79,28 @@
       customTxt.innerHTML = ">No file choosen, yet.";
     }
   });
+  var urlParams = new URLSearchParams(window.location.search);
+  var kdBuku = urlParams.get('kodeBuku');
+  $(document).ready(function() {
+    $.ajax({
+      type:'get',
+      url:'buku-db.php?kodeBuku='+kdBuku+'',
+      datatype:'json',
+      success:function (result) {
+        $.each(result.data, function (i, data) {
+          $('#gambar').attr("src", "../../resources/img/"+data.gambar_buku+"");
+          $('#jBuku').attr("value", ""+data.judul_buku+"");
+          $('#penerbit').attr("value", ""+data.penerbit+"");
+          $('#tTerbit').attr("value", ""+data.tahun_terbit+"");
+          $('#penulis').attr("value", ""+data.penulis+"");
+          $('#jHalaman').attr("value", ""+data.jumlah_halaman+"");
+          $('#sinopsis').html(""+data.sinopsis+"");
+          $('#fmBuku').attr("action","req-l/proses-ubah.php?kodeBuku="+kdBuku+"");
+        });
+      }
+    });
+  });
+  // src="../../resources/img/"
 </script>
 </html>
 <?php 

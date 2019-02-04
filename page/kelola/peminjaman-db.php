@@ -3,10 +3,11 @@
 include "../../koneksi.php";
 
 
-$id = $_GET['id_pjn'] ?? '';
+$id_pjn = $_GET['id'] ?? '';
 
 $wh = "";
-$wh .= !empty($id) ?"id_pjn = '{$id}' and " : "";
+$wh .= !empty($id_pjn) ?"id_pjn = '{$id_pjn}' and " : "";
+$wh = !empty($wh) ? "where ".substr($wh, 0, -4) : "";
 
 
 $view = $mysqli->query("SELECT * FROM data_peminjaman {$wh}");
