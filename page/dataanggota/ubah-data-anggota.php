@@ -28,17 +28,17 @@
 
         <div class="form-group">
           <label for="exampleInputPassword1">Alamat</label>
-          <textarea class="form-control" placeholder="Alamat" name="form_alamat_anggota" id="alamat"></textarea>
+          <textarea class="form-control" placeholder="Alamat" name="form_alamat" id="alamat"></textarea>
           <br>
 
-        <select class="form-control" name="form_jk_anggota" id="jk">
+        <select class="form-control" name="form_jk" id="jk">
         
         </select>
 
         <br>
         <div class="form-group">
           <label for="exampleInputPassword1">No.Telepon</label>
-          <input type="text" class="form-control" name="form_no_tlp_anggota" placeholder="No.Telepon" id="noTlp">
+          <input type="text" class="form-control" name="form_tlp" placeholder="No.Telepon" id="noTlp">
         </div>
 
         <div class="" align="center">
@@ -73,7 +73,7 @@
             $('#jk').html(els);
           }
           $('#noTlp').attr("value", ""+data.no_tlp_anggota+"");
-          $('#fmA').attr("action", "req-a/proses-ubah-anggota.php?id="+id+"");
+          $('#fmA').attr("action", "req-a/proses-ubah.php?id="+id+"");
         });
       }
     });

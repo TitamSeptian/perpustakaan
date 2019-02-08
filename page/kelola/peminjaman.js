@@ -18,9 +18,9 @@ $(document).ready(function () {
       {"data" : "jumlah_hari_pjn"},
       {"data" : "tgl_pengembalian"},
       {"data" : "id_pjn", "render" : function ( id,a, b, c, d ) {
-        return `
-        		<a href="ubah-data-peminjaman.php?id=${b.id_pjn}" class="btn btn-primary" ><i class="fas fa-wrench"></i></a>
-       		 	<a href="kelola-pengembalian.php?id=${b.id_pjn}&id_x=${b.id_anggota_peminjaman}&kodeBuku=${b.kode_buku_pjn}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>`;
+       return`<a href="ubah-data-peminjaman.php?id=${b.id_pjn}" class="btn btn-primary" ><i class="fas fa-wrench"></i></a>
+              <a href="kelola-pengembalian.php?id=${b.id_pjn}&id_x=${b.id_anggota_peminjaman}&kodeBuku=${b.kode_buku_pjn}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>`;
+  
       }},
     ]
   });

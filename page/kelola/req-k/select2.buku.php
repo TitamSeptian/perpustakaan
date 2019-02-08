@@ -1,6 +1,6 @@
 <option></option>
 <?php 
-  include '../../../koneksi.php';
+  include '../../koneksi.php';
   $view_id = $mysqli->query("SELECT * FROM list_buku WHERE kode_buku ;");
   $num_result_id = $view_id->num_rows;
   if ($num_result_id >0) {
