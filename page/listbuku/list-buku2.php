@@ -77,16 +77,12 @@
         </nav>
           </nav>
           <div class="jumbotron jumbotron-fluid">
-            <div class="container">
+            <div class="container-fluid">
               <h1 class="display-4">list-buku</h1>
               <p class="lead">Anda sedang berada dalam laman list Buku.</p>
             </div>
           </div>
             <div class="container-fluid">
-               <form class="form-inline">
-                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form><br>
                 <a href="tambah-buku.php"><i class="fas fa-plus"></i> Tambah</a><br>
                 <div class="table-responsive">
                 <table id="myTable" class="display" style="width:100%">

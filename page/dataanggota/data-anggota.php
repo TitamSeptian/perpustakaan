@@ -81,19 +81,12 @@
           </nav>
             </nav>
             <div class="jumbotron jumbotron-fluid">
-              <div class="container">
+              <div class="container-fluid">
                 <h1 class="display-4">Data Anggota</h1>
                 <p class="lead">Anda sedang berada dalam laman Data Anggota.</p>
               </div>
             </div>
               <div class="container-fluid">
-                 <form class="form-inline" method="post" action="proses-search.php">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="keyword">
-                    <input type="submit" name="btn-search" class="btn btn-outline-success my-2 my-sm-0"  value="Search">
-                    <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
-                  </form>
-          <br>
-          <br>
           <a href="tambah-data-anggota.php"><i class="fas fa-plus"></i>Tambah</a>
                 <div class="table-responsive">
                   <br>
@@ -108,6 +101,16 @@
                       <th>Aksi</th>
                     </tr>
                   </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Nama</th>
+                      <th>Alamat</th>
+                      <th>JK</th>
+                      <th>No Tlp</th>
+                      <th>ID Anggota</th>
+                      <th>Aksi</th>
+                    </tr>
+                  </tfoot>
                 </table>
               </div>
           </div>
