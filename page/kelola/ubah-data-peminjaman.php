@@ -33,6 +33,7 @@
           <label for="exampleInputPassword1">Kode BUKU</label>
           <select class="form-control" id="buku_select2" name="form_kode_buku_pjn" required>
             <option id="buku-pjn"></option>
+
           </select>
         </div>
         <div class="form-group">
@@ -57,25 +58,7 @@
   var urlParams = new URLSearchParams(window.location.search);
   var id = urlParams.get('id');
   $(document).ready(function() {
-    $.ajax({
-      url:`peminjaman-db.php?id=${id}`,
-      type:'get',
-      dataType:'json',
-      success:function (result) {
-        $.each(result.data, function(i, data) {
-          $('#idPjn').attr('value',`${data.id_pjn}`);
-          $('#idPjn').attr('value',`${data.id_pjn}`);
-          $('#id-a').attr("value",`${data.id_anggota_peminjaman}`).html(`${data.id_anggota_peminjaman}`);
-          $('#buku-pjn').attr("value",`${data.kode_buku_pjn}`).html(`${data.kode_buku_pjn}`);
-          $('#jmlHariPjn').attr("value",`${data.jumlah_hari_pjn}`);
-          $('#fmK').attr("action",`req-k/proses-ubah.php?id=${data.id_pjn}`);
-        });
-      }
-    });
-    // $("#sel-a").select2({
-    // });
-    // $("#buku_select2").select2({
-    // });
+    
     $.ajax({
       type:'get',
       url:'../dataanggota/anggota-db.php',
@@ -83,9 +66,8 @@
       success:function (result){
         $.each(result.data, function(i, data){
           $('#sel-a').append(`
-              <option value="${data.id_anggota}">${data.id_anggota}</option>
+              <option value="${data.id_anggota}">${data.id_anggota} (${data.nama_anggota})</option>
             `);
-          console.info(i, data)
       });
       }
     });
@@ -96,11 +78,30 @@
       success:function (result){
         $.each(result.data, function(i, data){
           $('#buku_select2').append(`
-              <option value="${data.kode_buku}">${data.kode_buku}</option>
+              <option value="${data.kode_buku}">${data.kode_buku} (${data.judul_buku})</option>
             `);
       });
       }
-    }); 
+    });
+    
+    $.ajax({
+      url:`peminjaman-db.php?id=${id}`,
+      dataType:'json',
+      success:function (result) {
+        $.each(result.data, function(i, data) {
+          $('#idPjn').attr('value',`${data.id_pjn}`);
+          $('#idPjn').attr('value',`${data.id_pjn}`);
+          $('#id-a').attr("value",`${data.id_anggota_peminjaman}`).html(`${data.id_anggota_peminjaman}`);
+          $('#buku-pjn').attr("value",`${data.kode_buku_pjn}`).html(`${data.kode_buku_pjn} `);
+          $('#jmlHariPjn').attr("value",`${data.jumlah_hari_pjn}`);
+          $('#fmK').attr("action",`req-k/proses-ubah.php?id=${id}`);
+        });
+      }
+    });
+    $("#sel-a").select2({
+    });
+    $("#buku_select2").select2({
+    });
   });
 </script>
 </html>

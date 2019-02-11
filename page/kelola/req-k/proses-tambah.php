@@ -8,8 +8,8 @@
       $date = date("F j, Y");
       $theDate = $date;
       $timeStamp = StrToTime($theDate);
-      $in6days = StrToTime('+'.$lama_hari.' days', $timeStamp);
-      $days = "". date('F j, Y', $in6days);
+      $indays = StrToTime('+'.$lama_hari.' days', $timeStamp);
+      $days = "". date('F j, Y', $indays);
       $sql  ="
             INSERT INTO data_peminjaman SET 
             id_pjn =NULL, 

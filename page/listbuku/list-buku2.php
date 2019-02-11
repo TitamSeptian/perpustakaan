@@ -94,6 +94,7 @@
                     <tr>
                       <th>Gambar Buku</th>
                       <th>Judul Buku</th>
+                      <th>Kode Buku</th>
                       <th>Penulis</th>
                       <th>Penerbit</th>
                       <th>Tahun Terbit</th>
@@ -106,6 +107,7 @@
                     <tr>
                       <th>Gambar Buku</th>
                       <th>Judul Buku</th>
+                      <th>Kode Buku</th>
                       <th>Penulis</th>
                       <th>Penerbit</th>
                       <th>Tahun Terbit</th>
@@ -142,6 +144,7 @@
         {"data" : "gambar_buku", "render" : function ( data ) {
           return '<img src="../../resources/img/'+data+'" class="img-thumbnail">';
         }},
+        {"data" : "kode_buku"},
         {"data" : "judul_buku"},
         {"data" : "penulis"},
         {"data" : "penerbit"},
