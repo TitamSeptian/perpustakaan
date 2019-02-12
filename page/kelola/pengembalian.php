@@ -62,30 +62,7 @@
 
   </div>
   <script src="../../resources/js/jquery-3.3.1.min.js"></script>
-  <script type="text/javascript">
-    var urlParams = new URLSearchParams(window.location.search);
-    var id = urlParams.get('id');
-    var id_x = urlParams.get('id_x');
-    var kodeBuku = urlParams.get('kodeBuku');
-    console.info(id,id_x,kodeBuku);
-    $(document).ready(function(){
-    $.ajax({
-      type:'get',
-      url:"http://localhost/project_1/page/kelola/peminjaman-db.php?id="+id+"",
-      dataType:'json',
-      success:function (result) {
-        $.each(result.data, function (i, data) {
-          $('#in1').attr("value",""+data.id_pjn+"");
-          $('#in2').attr("value",""+data.id_anggota_peminjaman+"");
-          $('#in3').attr("value",""+data.kode_buku_pjn+"");
-          $('#in4').attr("value",""+data.tanggal_entri_pjn+"");
-          $('#in5').attr("value",""+data.jumlah_hari_pjn+"");
-          $('#in6').attr("value",""+data.tgl_pengembalian+"");
-          $('#fm').attr("action","req-k/tambah-riwayat.php?id="+data.id_pjn+"");
-        });
-      }
-    });
-    });
+  <script type="text/javascript" src="peminjaman.js">
   </script>
 </body>
 </html>

@@ -136,5 +136,7 @@
   <!-- jQuery Custom Scroller CDN -->
   <script src="../../resources/js/jquery.mCustomScrollbar.concat.min.js"></script>
   <script src="../../resources/js/jquery.dataTables.min.js"></script>
+  <script src="req-k/jsdatatable.js"></script>
   <script type="text/javascript" src="peminjaman.js"></script>
+  <script type="text/javascript" src="../../resources/js/scrollbar.js"></script>
 </html>

@@ -118,7 +118,7 @@
         </div>
       </div>
   </div>
-
+  
   <!-- jQuery CDN - Slim version -->
   <script src="../../resources/js/jquery-3.3.1.min.js"></script>
   <!-- Popper.JS -->
@@ -128,60 +128,6 @@
   <!-- jQuery Custom Scroller CDN -->
   <script src="../../resources/js/jquery.mCustomScrollbar.concat.min.js"></script>
 
-  <script type="text/javascript">
-      var urlParams = new URLSearchParams(window.location.search);
-      var id = urlParams.get('id');
-      var id_x = urlParams.get('id_x');
-      var kodeBuku = urlParams.get('kodeBuku');
-      //console.info(id,id_x,kodeBuku);
-      $(document).ready(function () {
-          $("#sidebar").mCustomScrollbar({
-              theme: "minimal"
-          });
-
-          $('#sidebarCollapse').on('click', function () {
-              $('#sidebar, #content').toggleClass('active');
-              $('.collapse.in').toggleClass('in');
-              $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-          });
-          $.ajax({
-            type:'get',
-            url:"http://localhost/project_1/page/kelola/peminjaman-db.php?id="+id+"",
-            dataType:'json',
-            success:function(result){
-              $.each(result.data, function(i, data){
-                $('#th1').html(""+data.id_pjn+"");
-                $('#th2').html(""+data.id_anggota_peminjaman+"");
-                $('#th4').html(""+data.kode_buku_pjn+"");
-                $('#th7').html(""+data.tanggal_entri_pjn+"");
-                $('#th8').html(""+data.jumlah_hari_pjn+"");
-                $('#th9').html(""+data.tgl_pengembalian+"");
-              });
-            }
-          });
-          $.ajax({
-            type:'get',
-            url:"../dataanggota/anggota-db.php?id_x="+id_x+"",
-            dataType:'json',
-            success:function(result){
-              $.each(result.data, function(i, data){
-                $('#th3').html(""+data.nama_anggota+"");
-              });
-            }
-          });
-          $.ajax({
-            type:'get',
-            url:"../listbuku/buku-db.php?kodeBuku="+kodeBuku+"",
-            dataType:'json',
-            success:function(result){
-              $.each(result.data, function(i, data){
-                $('#th5').html(""+data.judul_buku+"");
-                $('#th6').html(""+data.penulis+"");
-              });
-            }
-          });
-          $('#th10').html('<a href="pengembalian.php?id='+id+'&id_x='+id_x+'&kodeBuku='+kodeBuku+'"><button type="button" class="btn btn-warning"><i class="fas fa-check"></i></button></a>')
-      });
-  </script>
+  <script src="peminjaman.js"></script>
 </body>
 </html>

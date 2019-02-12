@@ -26,9 +26,7 @@
             <option id="id-a"></option>
              <!-- lanjukan dijs -->
           </select>
-          <!-- <input type="text" class="form-control" name="form_id_anggota_pjn" id="exampleInputPassword1" placeholder="ID Anggota" value="<?php// echo $row_select["id_anggota_peminjaman"]; ?>"> -->
         </div>
-
         <div class="form-group">
           <label for="exampleInputPassword1">Kode BUKU</label>
           <select class="form-control" id="buku_select2" name="form_kode_buku_pjn" required>
@@ -54,54 +52,5 @@
 </body>
 <script src="../../resources/js/jquery-3.3.1.min.js"></script>
 <script src="../../resources/js/select2.min.js"></script>
-<script type="text/javascript">
-  var urlParams = new URLSearchParams(window.location.search);
-  var id = urlParams.get('id');
-  $(document).ready(function() {
-    
-    $.ajax({
-      type:'get',
-      url:'../dataanggota/anggota-db.php',
-      dataType:'json',
-      success:function (result){
-        $.each(result.data, function(i, data){
-          $('#sel-a').append(`
-              <option value="${data.id_anggota}">${data.id_anggota} (${data.nama_anggota})</option>
-            `);
-      });
-      }
-    });
-    $.ajax({
-      type:'get',
-      url:'../listbuku/buku-db.php',
-      dataType:'json',
-      success:function (result){
-        $.each(result.data, function(i, data){
-          $('#buku_select2').append(`
-              <option value="${data.kode_buku}">${data.kode_buku} (${data.judul_buku})</option>
-            `);
-      });
-      }
-    });
-    
-    $.ajax({
-      url:`peminjaman-db.php?id=${id}`,
-      dataType:'json',
-      success:function (result) {
-        $.each(result.data, function(i, data) {
-          $('#idPjn').attr('value',`${data.id_pjn}`);
-          $('#idPjn').attr('value',`${data.id_pjn}`);
-          $('#id-a').attr("value",`${data.id_anggota_peminjaman}`).html(`${data.id_anggota_peminjaman}`);
-          $('#buku-pjn').attr("value",`${data.kode_buku_pjn}`).html(`${data.kode_buku_pjn} `);
-          $('#jmlHariPjn').attr("value",`${data.jumlah_hari_pjn}`);
-          $('#fmK').attr("action",`req-k/proses-ubah.php?id=${id}`);
-        });
-      }
-    });
-    $("#sel-a").select2({
-    });
-    $("#buku_select2").select2({
-    });
-  });
-</script>
+<script type="text/javascript" src="req-k/ubah-pjn.js"></script>
 </html>

@@ -24,7 +24,7 @@
           <span id="custom-text">No file choosen, yet.</span>
           <br>
 
-          <img id="gambar" style="margin-left:40px; margin-top: 30px; width:500px; height:300px;">
+          <img id="gambar"  class="img-thumbnail">
 		
         </div>
           <label for="exampleInputPassword1">Judul Buku</label>
@@ -65,44 +65,5 @@
   </div>
 </body>
   <script src="../../resources/js/jquery-3.3.1.min.js"></script>
-  <script type="text/javascript">
-  const gambaruploadBtn = document.getElementById("gambarupload");
-  const customBtn = document.getElementById("custom-button");
-  const customTxt = document.getElementById("custom-text");
-  customBtn.addEventListener("click", function(){
-    gambaruploadBtn.click();
-  });
-  gambaruploadBtn.addEventListener("change", function(){
-    if (gambaruploadBtn.value) {
-      customTxt.innerHTML = gambaruploadBtn.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-    } else {
-      customTxt.innerHTML = ">No file choosen, yet.";
-    }
-  });
-  var urlParams = new URLSearchParams(window.location.search);
-  var kdBuku = urlParams.get('kodeBuku');
-  $(document).ready(function() {
-    $.ajax({
-      type:'get',
-      url:'buku-db.php?kodeBuku='+kdBuku+'',
-      datatype:'json',
-      success:function (result) {
-        $.each(result.data, function (i, data) {
-          $('#gambar').attr("src", "../../resources/img/"+data.gambar_buku+"");
-          $('#jBuku').attr("value", ""+data.judul_buku+"");
-          $('#penerbit').attr("value", ""+data.penerbit+"");
-          $('#tTerbit').attr("value", ""+data.tahun_terbit+"");
-          $('#penulis').attr("value", ""+data.penulis+"");
-          $('#jHalaman').attr("value", ""+data.jumlah_halaman+"");
-          $('#sinopsis').html(""+data.sinopsis+"");
-          $('#fmBuku').attr("action","req-l/proses-ubah.php?kodeBuku="+kdBuku+"");
-        });
-      }
-    });
-  });
-  // src="../../resources/img/"
-</script>
+  <script type="text/javascript" src="buku.js"></script>
 </html>
-<?php 
-$mysqli->close();
- ?>

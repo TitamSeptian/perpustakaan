@@ -20,13 +20,7 @@
           <label for="exampleInputPassword1">Anggota</label>
           <div id="sel-anggota">
             <select class="form-control" name="form_id_anggota_pjn" id="sel-a"></select>
-            <!-- <select class="form-control" id="id-select" name="form_id_anggota_pjn" size="50" required>
-           
-            </select> -->
           </div>
-          <!-- <select class="form-control" id="id-select" name="form_id_anggota_pjn" size="50" required>
-            <?php //include 'req-k/select2.anggota.php'; ?>
-          </select> -->
         </div>
         
         <div class="form-group">
@@ -45,45 +39,8 @@
         </div>
       </form>
   </div>
-
-
 </body>
 <script src="../../resources/js/jquery-3.3.1.min.js"></script>
 <script src="../../resources/js/select2.min.js"></script>
-<script type="text/javascript">
-  $(document).ready(function() {
-
-    $.ajax({
-      type:'get',
-      url:'../dataanggota/anggota-db.php',
-      dataType:'json',
-      success:function (result,b,c,d){
-        $.each(result.data, function(i, data){
-          $('#sel-a').append(`
-              <option value="${data.id_anggota}">${data.id_anggota}</option>
-            `);
-      });
-      }
-    });
-    $.ajax({
-      type:'get',
-      url:'../listbuku/buku-db.php',
-      dataType:'json',
-      success:function (result,b,c,d){
-        $.each(result.data, function(i, data){
-          $('#buku_select2').append(`
-              <option value="${data.kode_buku}">${data.kode_buku}</option>
-            `);
-      });
-      }
-    });
-    $("#sel-a").select2({
-      placeholder:"anggota",
-    });
-    $("#buku_select2").select2({
-      placeholder:"Buku"
-    });
-  });
-</script>
-
+<script src="req-k/tambah-pjn.js"></script>
 </html>

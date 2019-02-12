@@ -27,7 +27,8 @@
           <small id="emailHelp" class="form-text text-muted">Tidak Perlu Diisi Jika Tidak Diperlukan!.</small>
           <label for="exampleInputPassword1">Buku Harus di Kembalikan</label>
           <input type="text" name="" id="tanggal" class="form-control" readonly=""><br>
-          <label for="exampleInputPassword1">Jumlah Lebih Hari</label>
+
+          <label for="exampleInputPassword1">Lebih Hari</label>
           <input type="text" class="form-control" id="setDenda" placeholder="Lebih Hari" name="form_lebih_hari" readonly="">
         </div>
 
@@ -44,48 +45,7 @@
     </div>
 </form>
 <script src="../../resources/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript">
-  var urlParams = new URLSearchParams(window.location.search);
-  var id = urlParams.get('id');
-  $(document).ready(function() {
-    $.ajax({
-      type:'get',
-      url:`peminjaman-db.php?id=${id}`,
-      dataType:'json',
-      success:function (result){
-        $.each(result.data, function(i, data){
-          $('#tanggal').attr('value' , `${data.tgl_pengembalian}`)
-      });
-      }
-    });
-    $('#verivikasi').attr('href',`hapus-peminjaman.php?id=${id}`);
-    //
-    function selisih_tanggal(nDate)
-    {
-     var tgl = new Date();
-     var tgl2 = new Date(nDate);
-
-     tgl.setHours(0);
-     tgl.setMinutes(0);
-     tgl.setSeconds(0);
-     tgl.setMilliseconds(0);
-
-     var selisih = Math.abs(tgl - tgl2)/86400000;
-    if (tgl < tgl2) {
-      return selisih = 'tidak di denda';
-    }else{
-      return selisih;
-    }
-     
-    }
-    var xtgl = $('#tanggal').val();
-    var xselisih = selisih_tanggal(xtgl);
-    if (xselisih == 'tidak di denda' ) {xselisih = 0} else{xselisih}
-    $('#setDenda').attr('value', xselisih);
-    var setDenda = $('#setDenda').val();
-    $('#getDenda').attr('value',setDenda*1000);
-  });
-</script>  
+<script type="text/javascript" src="peminjaman.js"></script>  
 </body>
 </html>
 

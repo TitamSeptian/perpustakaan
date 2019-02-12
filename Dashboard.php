@@ -113,11 +113,6 @@ session_start();
         </center></div><!-- /.col-lg-4 -->
       </div><!-- /.row -->
     </div>
-
-
-
-
-
     <footer class="container">
       <hr>
         <p class="float-right"><a href="#">Back to top</a></p>

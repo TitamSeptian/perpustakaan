@@ -58,20 +58,7 @@
     </div>
 
   </div>
-<script type="text/javascript">
-  const gambaruploadBtn = document.getElementById("gambarupload");
-  const customBtn = document.getElementById("custom-button");
-  const customTxt = document.getElementById("custom-text");
-  customBtn.addEventListener("click", function(){
-    gambaruploadBtn.click();
-  });
-  gambaruploadBtn.addEventListener("change", function(){
-    if (gambaruploadBtn.value) {
-      customTxt.innerHTML = gambaruploadBtn.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-    } else {
-      customTxt.innerHTML = ">No file choosen, yet.";
-    }
-  });
-</script>
+  <script type="text/javascript" src="../../resources/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="buku.js"></script>
 </body>
 </html>

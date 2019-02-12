@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html>
 <head>
   <title>e-Perpustakaan</title>
@@ -27,7 +27,7 @@
           <small id="emailHelp" class="form-text text-muted">Isi alamat anggota dengan Lengkap!.</small>
         </div>
 
-        <select class="form-control" name="form_jk_anggota" required id="jk">
+        <select class="form-control"  name="form_jk_anggota" required id="jk">
           <option value="Laki-Laki">Laki-Laki</option>
           <option value="Wanita">Wanita</option>
         </select>
@@ -45,12 +45,4 @@
   </div>
 </body>
 <script type="text/javascript" src="../../resources/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="../../resources/js/select2.min.js"></script>
-<script type="text/javascript">
-  $(document).ready(function() {
-    $("#jk")
-      placeholder:"Jenis Kelamin"
-    
-  });
-</script>
 </html>

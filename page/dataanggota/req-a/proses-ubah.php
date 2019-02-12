@@ -17,14 +17,14 @@
     if ($mysqli->query($sql)) {
       echo "
       <script>
-      alert('Laporan berhasil diperbaharui !');
+      alert('Data Anggota diperbaharui !');
       window.location = '../data-anggota.php';
       </script>
       ";
       }else{
         echo "
         <script>
-        alert('Laporan gagal diperbaharui !');
+        alert('Data Anggota gagal diperbaharui !');
         window.location = '../data-anggota.php';
         </script>
         ";
@@ -32,7 +32,7 @@
     }else{
       echo "
         <script>
-        alert('Laporan gagal diperbaharui !');
+        alert('Data Anggota gagal diperbaharui !');
         window.location = '../data-anggota.php';
         </script>
         ";

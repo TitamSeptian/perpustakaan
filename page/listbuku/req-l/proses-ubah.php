@@ -4,16 +4,13 @@
   $sql_select= " SELECT * FROM list_buku WHERE kode_buku = '".$kode_buku."';";
   $select = $mysqli->query($sql_select);
   $row_select=$select->fetch_array();
-
   
-  
-
   $action = isset ($_POST["form_edit"])?$_POST["form_edit"]:"";
   if ($action) {
     
     $nama_file = $_FILES['form_gambar_buku']['name'];
     $source = $_FILES['form_gambar_buku']['tmp_name'];
-    $folder = './../....//resources/img/';
+    $folder = './resources/img/';
     
     if($nama_file != ''){
     move_uploaded_file($source, $folder.$nama_file);
@@ -33,14 +30,14 @@
       echo "
       <script>
       alert('Buku berhasil diperbaharui !');
-      window.location = '../list-buku2.php;
+      window.location = '../list-buku2.php?kodeBuku=".$kode_buku."';
       </script>
       ";
       }else{
         echo "
         <script>
         alert('Buku gagal diperbaharui !');
-        window.location = '../list-buku2.php;
+        window.location = '../list-buku2.php?kodeBuku=".$kode_buku."';
         </script>
         ";
       }
@@ -62,17 +59,19 @@
       echo "
       <script>
       alert('Buku berhasil diperbaharui !');
-      window.location = '../list-buku2.php;
+      window.location = '../list-buku2.php?kodeBuku=".$kode_buku."';
       </script>
       ";
       }else{
         echo "
         <script>
         alert('Buku gagal diperbaharui !');
-        window.location = '../list-buku2.php;
+        window.location = '../list-buku2.php?kodeBuku=".$kode_buku."';
         </script>
         ";
       }
     }
+    }else{
+      echo "aaaaa";
     }
    ?>
