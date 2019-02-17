@@ -24,7 +24,7 @@
           <span id="custom-text">No file choosen, yet.</span>
           <br>
 
-          <img id="gambar"  class="img-thumbnail">
+          <img id="gambar"  class="img-fluid rounded mx-auto d-block">
 		
         </div>
           <label for="exampleInputPassword1">Judul Buku</label>

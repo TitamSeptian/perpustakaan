@@ -18,10 +18,10 @@ $action = isset($_POST["form_tambah"])?$_POST["form_tambah"]:"";
       }else{
         echo "
           <script>
-            alert('gagal Ditambahkan!');
+            alert('gagal Dikembalikan!');
             window.location='../kelola-peminjaman.php';
           </script>
         ";
       }
-  } 
+  }   
  ?>

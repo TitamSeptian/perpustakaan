@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="../../resources/css/3.1.5/jquery.mCustomScrollbar.min.css">
     <link rel="stylesheet" href="../../resources/css/datatables.css"/>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 </head>
 
 <body>
@@ -85,7 +86,7 @@
             <div class="container-fluid">
                 <a href="tambah-buku.php"><i class="fas fa-plus"></i> Tambah</a><br>
                 <div class="table-responsive">
-                <table id="myTable" class="display" style="width:100%">
+                <table id="myTable" class="table table-striped table-bordered display" style="width:100%">
                   <thead>
                     <tr>
                       <th>Gambar Buku</th>

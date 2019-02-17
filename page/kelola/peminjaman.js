@@ -10,13 +10,21 @@ $(document).ready(function () {
     dataType:'json',
     success:function(result){
       $.each(result.data, function(i, data){
+        //kelola-peminjaman
         $('#th1').html(""+data.id_pjn+"");
         $('#th2').html(""+data.id_anggota_peminjaman+"");
         $('#th4').html(""+data.kode_buku_pjn+"");
         $('#th7').html(""+data.tanggal_entri_pjn+"");
         $('#th8').html(""+data.jumlah_hari_pjn+"");
         $('#th9').html(""+data.tgl_pengembalian+"");
-
+          //kelola-pengembalian
+        $('#th1-g').html(""+data.id_pjn+"");
+        $('#th2-g').html(""+data.id_anggota_peminjaman+"");
+        $('#th4-g').html(""+data.kode_buku_pjn+"");
+        $('#th7-g').html(""+data.tanggal_entri_pjn+"");
+        $('#th8-g').html(""+data.jumlah_hari_pjn+"");
+        $('#th9-g').html(""+data.tgl_pengembalian+"");
+          //ubah-peminjaman
         $('#in1').attr("value",""+data.id_pjn+"");
         $('#in2').attr("value",""+data.id_anggota_peminjaman+"");
         $('#in3').attr("value",""+data.kode_buku_pjn+"");
@@ -62,7 +70,7 @@ $(document).ready(function () {
     dataType:'json',
     success: function (result) {
       const anggota = result.data[0];
-      $('#th3').html(anggota.nama_anggota)
+      $('#th3-g').html(anggota.nama_anggota)
     }
   });
   $.ajax({
@@ -70,10 +78,10 @@ $(document).ready(function () {
     dataType:'json',
     success: function (result) {
       const buku = result.data[0];
-      $('#th5').html(buku.judul_buku);
-      $('#th6').html(buku.penulis);
+      $('#th5-g').html(buku.judul_buku);
+      $('#th6-g').html(buku.penulis);
     }
   });
   //$('#th10').html('aaaaaaaa');
-  $('#th10').html(`<a href="pengembalian.php?id=${id}&id_x=${id_x}&kodeBuku=${kodeBuku}" class="btn btn-dark">Lanjut</a>`);
+  $('#th10-g').html(`<a href="pengembalian.php?id=${id}&id_x=${id_x}&kodeBuku=${kodeBuku}" class="btn btn-primary">Lanjut</a>`);
 });

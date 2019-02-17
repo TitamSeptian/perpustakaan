@@ -10,7 +10,7 @@
     
     $nama_file = $_FILES['form_gambar_buku']['name'];
     $source = $_FILES['form_gambar_buku']['tmp_name'];
-    $folder = './resources/img/';
+    $folder = './../../../resources/img/';
     
     if($nama_file != ''){
     move_uploaded_file($source, $folder.$nama_file);

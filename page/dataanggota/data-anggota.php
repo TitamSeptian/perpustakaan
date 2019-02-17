@@ -81,7 +81,7 @@
             </div>
           </div>
             <div class="container-fluid">
-        <a href="tambah-data-anggota.php"><i class="fas fa-plus"></i>Tambah</a>
+        <a href="tambah-data-anggota.php" data-toggle="modal" data-target="#exampleModalScrollable"><i class="fas fa-plus"></i>Tambah</a>
               <div class="table-responsive">
                 <br>
               <table id="myTable" class="display" style="width:100%">
@@ -107,9 +107,61 @@
                 </tfoot>
               </table>
             </div>
-        </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalScrollableTitle">Tambah Anggota</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
+      <div class="modal-body">
+        
+      <form method="post" action="req-a/proses-tambah-anggota.php">
+      <div class="content" align="">
+        <div class="login-box">
+          <h3 class="txt" align="center"><b>Tambah Anggota</b></h3>
+          <form method="post" action="req-a/proses-tambah-anggota.php">
+          <div class="form-group">
+            <label for="exampleInputPassword1">Nama Lengkap</label>
+            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nama Lengkap" name="form_nama_anggota" required>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputPassword1">Alamat</label>
+            <textarea class="form-control" id="exampleInputPassword1" placeholder="Alamat" name="form_alamat_anggota"></textarea>
+            <small id="emailHelp" class="form-text text-muted">Isi alamat anggota dengan Lengkap!.</small>
+          </div>
+
+          <select class="form-control"  name="form_jk_anggota" required id="jk">
+            <option value="Laki-Laki">Laki-Laki</option>
+            <option value="Wanita">Wanita</option>
+          </select>
+          <br>
+          <div class="form-group">
+            <label for="exampleInputPassword1">No.Telepon</label>
+            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="No.Telepon" name="form_no_tlp_anggota" required>
+          </div>
+
+          <div class="" align="center">
+          <input type="submit" name="form_tambah" value="Tambah" class="btn btn-primary" >
+          <small id="emailHelp" class="form-text text-muted">Pastikan semua form telah terisi sebelum menekan tombol tambah!.</small>  
+          </div>
+        </form>
+      </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+        
+      </div>
+    </form>
+    </div>
   </div>
+</div>
   <script defer src="../../resources/js/solid.js"></script>
   <script defer src="../../resources/js/fontawesome.js"></script>
   <!-- jQuery CDN - Slim version (=without AJAX) -->

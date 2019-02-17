@@ -103,16 +103,16 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <th id="th1"><!-- id peminjaman--></th>
-                  <th id="th2"><!-- id anggota--></th>
-                  <th id="th3"><!-- nama peminjam--></th>
-                  <th id="th4"><!-- kode_buku--></th>
-                  <th id="th5"><!-- judul--></th>
-                  <th id="th6"><!-- penulis--></th>
-                  <th id="th7"><!-- tanggal_pinjman--></th>
-                  <th id="th8"><!--  hari_pinjma--></th>
-                  <th id="th9"><!--  tanggal kembali--></th>
-                  <th id="th10"><!-- aksi--></th>
+                  <th id="th1-g"><!-- id peminjaman--></th>
+                  <th id="th2-g"><!-- id anggota--></th>
+                  <th id="th3-g"><!-- nama peminjam--></th>
+                  <th id="th4-g"><!-- kode_buku--></th>
+                  <th id="th5-g"><!-- judul--></th>
+                  <th id="th6-g"><!-- penulis--></th>
+                  <th id="th7-g"><!-- tanggal_pinjman--></th>
+                  <th id="th8-g"><!--  hari_pinjma--></th>
+                  <th id="th9-g"><!--  tanggal kembali--></th>
+                  <th id="th10-g"><!-- aksi--></th>
                 </tbody>
             </div>
         </div>
@@ -127,7 +127,7 @@
   <script src="../../resources/js/bootstrap.min.js"></script>
   <!-- jQuery Custom Scroller CDN -->
   <script src="../../resources/js/jquery.mCustomScrollbar.concat.min.js"></script>
-
+  <script src="../../resources/js/scrollbar.js"></script>
   <script src="peminjaman.js"></script>
 </body>
 </html>

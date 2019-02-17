@@ -30,7 +30,7 @@
 
         <div class="form-group">
           <label for="exampleInputPassword1">Jumlah Hari Pinjam</label>
-          <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Jumlah Hari" name="form_jumlah_hari_pjn" autocomplete="off" required>
+          <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Jumlah Hari" name="form_jumlah_hari_pjn" min="1" required>
         </div>
         <br>
         <div class="" align="center">
