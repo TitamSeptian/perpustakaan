@@ -12,7 +12,7 @@
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="../../resources/css/jquery.mCustomScrollbar.min.css">
     <link rel="stylesheet" href="../../resources/css/datatables.css"/>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/>
+    <link rel="stylesheet" href="../../resources/css/jquery.dataTables.min.css"/>
     <!-- Font Awesome JS -->
 </head>
 <body>
@@ -38,7 +38,10 @@
                   <a href="data-anggota.php"><i class="fas fa-address-book" style="margin-right: 5px;"></i>Data Anggota</a>
               </li>
               <li>
-                  <a href="../riwayat/riwayat.php"><i class="fas fa-sync-alt" style="margin-right: 5px;"></i>Riwayat</a>
+                  <a href="../riwayat/riwayat.php"><i class="fas fa-trash-alt" style="margin-right: 5px;"></i>Riwayat</a>
+              </li>
+              <li>
+                  <a href="../laporan/laporan.php"><i class="fas fa-sync-alt" style="margin-right: 5px;"></i>Laporan</a>
               </li>
           </ul>
       </nav>
@@ -68,6 +71,9 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="../riwayat/riwayat.php">Riwayat</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../laporan/laporan.php">Laporan</a>
               </li>
             </ul>
             <a class="btn btn-outline-light" href="../../logout.php" role="button">Logout;</a>

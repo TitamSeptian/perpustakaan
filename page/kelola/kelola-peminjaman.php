@@ -47,7 +47,10 @@
                     <a href="../dataanggota/data-anggota.php"><i class="fas fa-address-book" style="margin-right: 5px;"></i>Data Anggota</a>
                 </li>
                 <li>
-                    <a href="../riwayat/riwayat.php"><i class="fas fa-sync-alt" style="margin-right: 5px;"></i>Riwayat</a>
+                    <a href="../riwayat/riwayat.php"><i class="fas fa-trash-alt" style="margin-right: 5px;"></i>Riwayat</a>
+                </li>
+                <li>
+                    <a href="../laporan/laporan.php"><i class="fas fa-sync-alt" style="margin-right: 5px;"></i>Laporan</a>
                 </li>
             </ul>
         </nav>
@@ -79,6 +82,9 @@
                 <li class="nav-item">
                   <a class="nav-link" href="../riwayat/riwayat.php">Riwayat</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../laporan/laporan.php">Laporan</a>
+                </li>
               </ul>
               <a class="btn btn-outline-light" href="../../logout.php" role="button">Logout;</a>
             </div>
@@ -95,26 +101,28 @@
                   <br>
                   <br>
                 <div class="table-responsive">
-                  <table id="myTable" class="display" style="width:100%">
+                  <table id="myTable" class="display compact" style="width:100%">
                     <thead>
                       <tr>
-                        <td>ID PJN</td>
-                        <td>Kode Buku PJN</td>
+                        <td>ID Peminjaman</td>
+                        <td>Kode Buku</td>
                         <td>ID Anggota Peminjaman</td>
-                        <td>Tanggal Entri PJN</td>
-                        <td>Jumlah Hari PJN</td>
+                        <td>Tanggal Entri</td>
+                        <td>Jumlah Hari</td>
                         <td>Tanggal Pengembalian</td>
+                        <td>Status</td>
                         <td>Opsi</td>
                       </tr>
                     </thead>
                     <tfoot>
                       <tr>
-                        <td>ID PJN</td>
-                        <td>Kode Buku PJN</td>
+                        <td>ID Peminjaman</td>
+                        <td>Kode Buku</td>
                         <td>ID Anggota Peminjaman</td>
-                        <td>Tanggal Entri PJN</td>
-                        <td>Jumlah Hari PJN</td>
+                        <td>Tanggal Entri</td>
+                        <td>Jumlah Hari</td>
                         <td>Tanggal Pengembalian</td>
+                        <td>Status</td>
                         <td>Opsi</td>
                       </tr>
                     </tfoot>

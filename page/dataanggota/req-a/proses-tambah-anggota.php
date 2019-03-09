@@ -23,7 +23,6 @@
   }
   $action = isset($_POST["form_tambah"])?$_POST["form_tambah"]:"";
   if ($action){
-
       $sql  ="
             INSERT INTO data_anggota_perpus SET 
             id_anggota ='".id_a()."', 
@@ -37,7 +36,7 @@
             }else{
               echo "
                 <script>
-                  alert('Gagal Membuat Akun!');
+                  alert('Gagal Mendaftar!');
                   window.location='../data-anggota.php';
                 </script>
               ";

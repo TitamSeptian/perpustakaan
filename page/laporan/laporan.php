@@ -11,7 +11,7 @@
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="../../resources/css/riwayat.css">
+    <link rel="stylesheet" href="../../resources/css/laporan.css">
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="../../resources/jquery.mCustomScrollbar.min.css">
 
@@ -46,11 +46,11 @@
               <li>
                   <a href="../dataanggota/data-anggota.php"><i class="fas fa-address-book" style="margin-right: 5px;"></i>Data Anggota</a>
               </li>
-              <li class="active">
-                  <a href="riwayat.php"><i class="fas fa-trash-alt" style="margin-right: 5px;"></i>Riwayat</a>
+              <li>
+                  <a href="../riwayat/riwayat.php"><i class="fas fa-trash-alt" style="margin-right: 5px;"></i>Riwayat</a>
               </li>
               <li class="active">
-                  <a href="../laporan/laporan.php"><i class="fas fa-sync-alt" style="margin-right: 5px;"></i>Laporan</a>
+                  <a href="laporan.php"><i class="fas fa-sync-alt" style="margin-right: 5px;"></i>Laporan</a>
               </li>
           </ul>
       </nav>
@@ -78,12 +78,12 @@
               <li class="nav-item">
                 <a class="nav-link" href="../dataanggota/data-anggota.php">Data Anggota</a>
               </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="riwayat.php">Riwayat</a>
+              <li class="nav-item">
+                <a class="nav-link" href="../riwayat/riwayat.php">Riwayat</a>
               </li>
 
-              <li class="nav-item">
-                <a class="nav-link" href="../laporan/laporan.php">Laporan</a>
+              <li class="nav-item active">
+                <a class="nav-link" href="laporan.php">Laporan</a>
               </li>
             </ul>
             <a class="btn btn-outline-light" href="../../logout.php" role="button">Logout;</a>
@@ -92,41 +92,56 @@
           </nav>
           <div class="jumbotron jumbotron-fluid">
             <div class="container-fluid">
-              <h1 class="display-4">Riwayat</h1>
-              <p class="lead">Anda sedang berada dalam laman Riwayat.</p>
+              <h1 class="display-4">Laporan</h1>
+              <p class="lead">Anda sedang berada dalam laman Laporan.</p>
             </div>
           </div>
             <div class="container-fluid">
               <div class="table-responsive">
                 <br>
-              <table id="myTable" class="display" style="width:100%">
-                <thead>
-                  <tr>
-                    <th>ID Peminjam</th>
-                    <th>ID Anggota</th>
-                    <th>Kode Buku</th>
-                    <th>Tanggal Pinjam</th>
-                    <th>Lama Hari Pinjam</th>
-                    <th>Tanggal Pengembalian</th>
-                    <th>Anggota Mengembalikan</th>
-                    <th>Aksi</th>
-                  </tr>
-                </thead>
-                <tfoot>
-                  <tr>
-                    <th>ID Peminjam</th>
-                    <th>ID Anggota</th>
-                    <th>Kode Buku</th>
-                    <th>Tanggal Pinjam</th>
-                    <th>Lama Hari Pinjam</th>
-                    <th>Tanggal Pengembalian</th>
-                    <th>Anggota Mengembalikan</th>
-                    <th>Aksi</th>
-                  </tr>
-                </tfoot>
-              </table>
+                <h3>Seluruh Data Anggota</h3>
+                <div id="tAgt"><!-- Table anggota --></div>
             </div>
-        </div>
+                <h3>Buku Yang Masuk Bulan Januari</h3>
+                <div id="tBk0"><!-- Table Buku Masuk Berdaskan Bulan --></div><br>
+                <h3>Buku Yang Masuk Bulan Februari</h3>
+                <div id="tBk1"><!-- Table Buku Masuk Berdaskan Bulan --></div><br>
+                <h3>Buku Yang Masuk Bulan Maret</h3>
+                <div id="tBk2"><!-- Table Buku Masuk Berdaskan Bulan --></div><br>
+                <h3>Buku Yang Masuk Bulan April</h3>
+                <div id="tBk3"><!-- Table Buku Masuk Berdaskan Bulan --></div><br>
+                <h3>Buku Yang Masuk Bulan Mei</h3>
+                <div id="tBk4"><!-- Table Buku Masuk Berdaskan Bulan --></div><br>
+                <h3>Buku Yang Masuk Bulan Juni</h3>
+                <div id="tBk5"><!-- Table Buku Masuk Berdaskan Bulan --></div><br>
+                <h3>Buku Yang Masuk Bulan Juli</h3>
+                <div id="tBk6"><!-- Table Buku Masuk Berdaskan Bulan --></div><br>
+                <h3>Buku Yang Masuk Bulan Agustus</h3>
+                <div id="tBk7"><!-- Table Buku Masuk Berdaskan Bulan --></div><br>
+                <h3>Buku Yang Masuk Bulan September</h3>
+                <div id="tBk8"><!-- Table Buku Masuk Berdaskan Bulan --></div><br>
+                <h3>Buku Yang Masuk Bulan Oktober</h3>
+                <div id="tBk9"><!-- Table Buku Masuk Berdaskan Bulan --></div><br>
+                <h3>Buku Yang Masuk Bulan November</h3>
+                <div id="tBk10"><!-- Table Buku Masuk Berdaskan Bulan --></div><br>
+                <h3>Buku Yang Masuk Bulan Desember</h3>
+                <div id="tBk11"><!-- Table Buku Masuk Berdaskan Bulan --></div><br>
+                <hr>
+                <div class="container">
+                <div class="row justify-content-md-center">
+                  <div class="col col-md-6">
+                    <div id="tPbk"><!-- Peminjaman : Buku Yang Sering Di pinjam --></div>
+                  </div>
+                  <div class="col col-md-6">
+                    <div id="tPid"><!-- Peminjaman : Buku Yang Sering Di pinjam --></div>
+                  </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                
+                
+            </div>
       </div>
   </div>
 
@@ -140,7 +155,7 @@
   <script src="../../resources/js/jquery.mCustomScrollbar.concat.min.js"></script>
   <script src="../../resources/js/jquery.dataTables.min.js"></script>
   <script src="../../resources/js/scrollbar.js" ></script>
-  <script src="../../resources/js/riwayat.js"></script>
+  <script src="../../resources/js/laporan.js"></script>
 </body>
 
 </html>

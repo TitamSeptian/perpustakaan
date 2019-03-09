@@ -23,13 +23,13 @@
   }
   $action = isset($_POST["form_tambah"])?$_POST["form_tambah"]:"";
   if ($action){
-
+      $stts = 'I';
       $lama_hari =$mysqli->real_escape_string($_POST['form_jumlah_hari_pjn']);
-      $date = date("F j, Y");
+      $date = date("Y/m/j");
       $theDate = $date;
       $timeStamp = StrToTime($theDate);
       $indays = StrToTime('+'.$lama_hari.' days', $timeStamp);
-      $days = "". date('F j, Y', $indays);
+      $days = "". date('Y/m/j', $indays);
       $sql  ="
             INSERT INTO data_peminjaman SET 
             id_pjn = '".id()."', 
@@ -37,7 +37,9 @@
             kode_buku_pjn ='".$mysqli->real_escape_string($_POST['form_kode_buku_pjn'])."',
             jumlah_hari_pjn ='".$lama_hari."',
             tgl_pengembalian ='".$days."',
-            tanggal_entri_pjn='".$date."';";
+            tanggal_entri_pjn='".$date."',
+            status ='".$stts."',
+            agt_kbml='';";
             if($mysqli->query($sql)){
               echo "
                 <script>

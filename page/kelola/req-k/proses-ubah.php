@@ -17,7 +17,7 @@ include '../../../koneksi.php';
       echo "
       <script>
       alert('Buku Berhasil Disimpan !');
-      window.location = '../kelola-peminjaman.php?id=".$id_pjn."';
+      window.location = '../kelola-peminjaman.php';
       </script>
       ";
       }else{

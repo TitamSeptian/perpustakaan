@@ -14,7 +14,7 @@
 <form method="post">
   <div class="content" align="">
       <div class="login-box">
-        <h3 class="txt" align="center"><b>Ubah Data Peminjaman</b></h3>
+        <h3 class="txt" align="center"><b>Cek Denda</b></h3>
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="pengembalian.php">Informasi Peminjam</a></li>

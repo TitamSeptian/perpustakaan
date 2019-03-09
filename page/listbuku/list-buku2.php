@@ -14,8 +14,7 @@
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="../../resources/css/3.1.5/jquery.mCustomScrollbar.min.css">
     <link rel="stylesheet" href="../../resources/css/datatables.css"/>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../resources/css/jquery.dataTables.min.css"/>
 </head>
 
 <body>
@@ -40,7 +39,10 @@
               <a href="../dataanggota/data-anggota.php"><i class="fas fa-address-book" id="space"></i>Data Anggota</a>
           </li>
           <li>
-              <a href="../riwayat/riwayat.php"><i class="fas fa-sync-alt" id="space"></i>Riwayat</a>
+              <a href="../riwayat/riwayat.php"><i class="fas fa-trash-alt" id="space"></i>Riwayat</a>
+          </li>
+          <li>
+              <a href="../laporan/laporan.php"><i class="fas fa-sync-alt" id="space"></i>Laporan</a>
           </li>
         </ul>
       </nav>
@@ -72,6 +74,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="../riwayat.php">Riwayat</a>
               </li>
+              <li class="nav-item">
+                    <a class="nav-link" href="../laporan/laporan.php">Laporan</a>
+              </li>
             </ul>
             <a class="btn btn-outline-light" href="../../logout.php" role="button">Logout;</a>
           </div>
@@ -86,12 +91,12 @@
             <div class="container-fluid">
                 <a href="tambah-buku.php"><i class="fas fa-plus"></i> Tambah</a><br>
                 <div class="table-responsive">
-                <table id="myTable" class="table table-striped table-bordered display" style="width:100%">
+                <table id="myTable" class="display compact" style="width:100%">
                   <thead>
                     <tr>
                       <th>Gambar Buku</th>
-                      <th>Judul Buku</th>
                       <th>Kode Buku</th>
+                      <th>Judul Buku</th>
                       <th>Penulis</th>
                       <th>Penerbit</th>
                       <th>Tahun Terbit</th>
@@ -103,8 +108,8 @@
                   <tfoot>
                     <tr>
                       <th>Gambar Buku</th>
-                      <th>Judul Buku</th>
                       <th>Kode Buku</th>
+                      <th>Judul Buku</th>
                       <th>Penulis</th>
                       <th>Penerbit</th>
                       <th>Tahun Terbit</th>
@@ -116,7 +121,12 @@
                 </table>
                 </div>
             </div>
-              
+            
+              <!-- <div class="expandable">
+                <p>
+                  Novel yang ditulis oleh Andrea Hirata ini berkisahkan 10 orang anak yang tinggal di Belitung Timur, Desa Gantung Kabupaten Gantung. Kisah ini awalnya dimulai karena Depdikbud yang akan membubarkan sekolah Muhamamadiyah yang terancam akan dibubarkan jika tidak memiliki 10 murid. Saat itu kepala sekolah Pak Hafran mengumumkan jika jumlah muridnya tidak mencapai 10 orang maka Depdikbud akan membubarkan sekolah tersebut. Namun tak lama setelah Pak Hafran mengumumkan hal tersebut maka datang Harun dan ibunya yang hendak mendaftarkan dirinya di sekolah
+                </p>
+              </div> -->
     <!-- Font Awesome JS -->
   <script src="../../resources/js/jquery-3.3.1.js"></script>
   <script src="../../resources/js/jquery-3.3.1.min.js"></script>
@@ -130,9 +140,9 @@
   <script src="../../resources/js/jquery.mCustomScrollbar.concat.min.js"></script>
   <!-- <script src="../../resources/js/jquery.dynatable.js"></script> -->
 
-  
   <script src="../../resources/js/jquery.dataTables.min.js"></script>
-  <script type="text/javascript" src="buku.js"></script>
+  <!-- <script src="../../resources/js/jquery.expander.min.js"></script> -->
+  <!-- <script type="text/javascript" src="buku.js"></script> -->
   <script type="text/javascript" src="req-l/jsdatatable.js"></script>
   <script type="text/javascript" src="../../resources/js/scrollbar.js"></script>
 </body>
