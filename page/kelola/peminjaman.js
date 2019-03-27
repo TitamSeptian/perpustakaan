@@ -3,7 +3,6 @@ var id = urlParams.get('id');
 var id_x = urlParams.get('id_x');
 var kodeBuku = urlParams.get('kodeBuku');
 $(document).ready(function () {
-  
    $.ajax({
     type:'get',
     url:"http://localhost/project_1/page/kelola/peminjaman-db.php",

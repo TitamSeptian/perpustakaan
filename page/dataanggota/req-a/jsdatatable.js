@@ -8,8 +8,8 @@ $(document).ready(function() {
       {"data" : "no_tlp_anggota"},
       {"data" : "id_anggota"},
       {"data" : "id_anggota", "render" : function ( id ) {
-        return '<a href="ubah-data-anggota.php?id='+id+'" class="btn btn-primary" ><i class="fas fa-wrench"></i></a>\
-        <a href="hapus-data-anggota.php?id='+id+'" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>';
+        return `<a href="#" class="btn btn-primary" onclick="editModal()" data-toggle="modal" data-target="#exampleModalScrollable" data-id="${id}"><i class="fas fa-wrench"></i></a>
+        <a href="hapus-data-anggota.php?id=${id}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>`;
       }},
     ]
   });

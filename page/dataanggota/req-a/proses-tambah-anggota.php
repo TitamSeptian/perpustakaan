@@ -2,7 +2,7 @@
   include "../../../koneksi.php";
   function id_a()
   {
-    include "../../../koneksi.php";
+    include "../../../koneksi.php"; 
     $sql_id_a = "SELECT max(id_anggota) FROM data_anggota_perpus";
     $query = mysqli_query($mysqli, $sql_id_a) or die (mysql_error());
    
