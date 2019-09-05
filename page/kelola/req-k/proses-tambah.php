@@ -26,10 +26,12 @@
       $stts = 'I';
       $lama_hari =$mysqli->real_escape_string($_POST['form_jumlah_hari_pjn']);
       $date = date("Y/m/j");
+	  
       $theDate = $date;
       $timeStamp = StrToTime($theDate);
       $indays = StrToTime('+'.$lama_hari.' days', $timeStamp);
       $days = "". date('Y/m/j', $indays);
+	  
       $sql  ="
             INSERT INTO data_peminjaman SET 
             id_pjn = '".id()."', 
